@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
+		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
+		C60F5FE21C1796E700D2645D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FE11C1796E700D2645D /* ViewController.m */; };
+		C60F5FE51C1796E700D2645D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE31C1796E700D2645D /* Main.storyboard */; };
+		C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE61C1796E700D2645D /* Assets.xcassets */; };
+		C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C60F5FDD1C1796E700D2645D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C60F5FDE1C1796E700D2645D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C60F5FE01C1796E700D2645D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		C60F5FE11C1796E700D2645D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C60F5FE41C1796E700D2645D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C60F5FE61C1796E700D2645D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C60F5FE91C1796E700D2645D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C60F5FEB1C1796E700D2645D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C60F5FD41C1796E700D2645D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C60F5FCE1C1796E700D2645D = {
+			isa = PBXGroup;
+			children = (
+				C60F5FD91C1796E700D2645D /* Nemo-Master */,
+				C60F5FD81C1796E700D2645D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C60F5FD81C1796E700D2645D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C60F5FD71C1796E700D2645D /* Nemo-Master.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C60F5FD91C1796E700D2645D /* Nemo-Master */ = {
+			isa = PBXGroup;
+			children = (
+				C60F5FDD1C1796E700D2645D /* AppDelegate.h */,
+				C60F5FDE1C1796E700D2645D /* AppDelegate.m */,
+				C60F5FE01C1796E700D2645D /* ViewController.h */,
+				C60F5FE11C1796E700D2645D /* ViewController.m */,
+				C60F5FE31C1796E700D2645D /* Main.storyboard */,
+				C60F5FE61C1796E700D2645D /* Assets.xcassets */,
+				C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */,
+				C60F5FEB1C1796E700D2645D /* Info.plist */,
+				C60F5FDA1C1796E700D2645D /* Supporting Files */,
+			);
+			path = "Nemo-Master";
+			sourceTree = "<group>";
+		};
+		C60F5FDA1C1796E700D2645D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C60F5FDB1C1796E700D2645D /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C60F5FD61C1796E700D2645D /* Nemo-Master */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C60F5FEE1C1796E700D2645D /* Build configuration list for PBXNativeTarget "Nemo-Master" */;
+			buildPhases = (
+				C60F5FD31C1796E700D2645D /* Sources */,
+				C60F5FD41C1796E700D2645D /* Frameworks */,
+				C60F5FD51C1796E700D2645D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Nemo-Master";
+			productName = "Nemo-Master";
+			productReference = C60F5FD71C1796E700D2645D /* Nemo-Master.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C60F5FCF1C1796E700D2645D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = "Junhan Huang";
+				TargetAttributes = {
+					C60F5FD61C1796E700D2645D = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 9U23L6BV7T;
+					};
+				};
+			};
+			buildConfigurationList = C60F5FD21C1796E700D2645D /* Build configuration list for PBXProject "Nemo-Master" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C60F5FCE1C1796E700D2645D;
+			productRefGroup = C60F5FD81C1796E700D2645D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C60F5FD61C1796E700D2645D /* Nemo-Master */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C60F5FD51C1796E700D2645D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
+				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
+				C60F5FE51C1796E700D2645D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C60F5FD31C1796E700D2645D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
+				C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */,
+				C60F5FDC1C1796E700D2645D /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C60F5FE31C1796E700D2645D /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C60F5FE41C1796E700D2645D /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C60F5FE91C1796E700D2645D /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C60F5FEC1C1796E700D2645D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C60F5FED1C1796E700D2645D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C60F5FEF1C1796E700D2645D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Nemo-Master/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C60F5FF01C1796E700D2645D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Nemo-Master/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C60F5FD21C1796E700D2645D /* Build configuration list for PBXProject "Nemo-Master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60F5FEC1C1796E700D2645D /* Debug */,
+				C60F5FED1C1796E700D2645D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C60F5FEE1C1796E700D2645D /* Build configuration list for PBXNativeTarget "Nemo-Master" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C60F5FEF1C1796E700D2645D /* Debug */,
+				C60F5FF01C1796E700D2645D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C60F5FCF1C1796E700D2645D /* Project object */;
+}
