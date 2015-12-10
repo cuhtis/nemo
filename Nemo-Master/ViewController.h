@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    
+}
+
+-(IBAction)takephoto:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fishButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;

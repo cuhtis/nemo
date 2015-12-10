@@ -13,6 +13,8 @@
 
 @end
 
+
+
 @implementation ViewController
 
 - (void)viewDidLoad {
@@ -26,6 +28,8 @@
     
 }
 
+
+
 -(void)myAction{
     NSLog(@"jippiii");
 }
@@ -34,5 +38,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

@@ -14,6 +14,7 @@
 		C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE61C1796E700D2645D /* Assets.xcassets */; };
 		C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */; };
 		C60F60001C17E52800D2645D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FFF1C17E52800D2645D /* Helper.m */; };
+		FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBD376F1C1911B8001FBB52 /* CameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		C60F5FEB1C1796E700D2645D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60F5FFE1C17E52800D2645D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = ../Helper.h; sourceTree = "<group>"; };
 		C60F5FFF1C17E52800D2645D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = ../Helper.m; sourceTree = "<group>"; };
+		FBBD376E1C1911B8001FBB52 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		FBBD376F1C1911B8001FBB52 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 				C60F5FE01C1796E700D2645D /* ViewController.h */,
 				C60F5FE11C1796E700D2645D /* ViewController.m */,
 				C60F5FE31C1796E700D2645D /* Main.storyboard */,
+				FBBD376E1C1911B8001FBB52 /* CameraViewController.h */,
+				FBBD376F1C1911B8001FBB52 /* CameraViewController.m */,
 				C60F5FE61C1796E700D2645D /* Assets.xcassets */,
 				C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */,
 				C60F5FEB1C1796E700D2645D /* Info.plist */,
@@ -155,6 +160,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */,
 				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
 				C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */,
 				C60F5FDC1C1796E700D2645D /* main.m in Sources */,
@@ -305,6 +311,7 @@
 				C60F5FF01C1796E700D2645D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
