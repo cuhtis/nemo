@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Helper.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UIImage *nemo = [UIImage imageNamed:@"Nemo"];
+    UIImage *camera = [UIImage imageNamed:@"Camera"];
+    [Helper customizeBarButton:self.fishButton image:nemo highlightedImage:nemo];
+    [Helper customizeBarButton:self.cameraButton image:camera highlightedImage:camera];
+    
+}
+
+-(void)myAction{
+    NSLog(@"jippiii");
 }
 
 - (void)didReceiveMemoryWarning {

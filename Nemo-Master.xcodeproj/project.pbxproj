@@ -13,6 +13,7 @@
 		C60F5FE51C1796E700D2645D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE31C1796E700D2645D /* Main.storyboard */; };
 		C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE61C1796E700D2645D /* Assets.xcassets */; };
 		C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */; };
+		C60F60001C17E52800D2645D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FFF1C17E52800D2645D /* Helper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		C60F5FE61C1796E700D2645D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C60F5FE91C1796E700D2645D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C60F5FEB1C1796E700D2645D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C60F5FFE1C17E52800D2645D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = ../Helper.h; sourceTree = "<group>"; };
+		C60F5FFF1C17E52800D2645D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = ../Helper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 		C60F5FD91C1796E700D2645D /* Nemo-Master */ = {
 			isa = PBXGroup;
 			children = (
+				C60F5FFE1C17E52800D2645D /* Helper.h */,
+				C60F5FFF1C17E52800D2645D /* Helper.m */,
 				C60F5FDD1C1796E700D2645D /* AppDelegate.h */,
 				C60F5FDE1C1796E700D2645D /* AppDelegate.m */,
 				C60F5FE01C1796E700D2645D /* ViewController.h */,
@@ -153,6 +158,7 @@
 				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
 				C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */,
 				C60F5FDC1C1796E700D2645D /* main.m in Sources */,
+				C60F60001C17E52800D2645D /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
