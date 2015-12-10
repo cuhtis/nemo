@@ -7,16 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@import GoogleMaps;
 
-@interface ViewController : UIViewController{
-    
-}
-
--(IBAction)takephoto:(id)sender;
+@interface ViewController : UIViewController <GMSMapViewDelegate, CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fishButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (weak, nonatomic) IBOutlet UIToolbar *mainToolBar;
+@property (strong, nonatomic) IBOutlet GMSMapView *mapUIView;
 
 @end
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F9EAC0CC29F556A35F931E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E69F8DDFDB09EB02FEAADD5 /* libPods.a */; };
 		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
 		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
 		C60F5FE21C1796E700D2645D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FE11C1796E700D2645D /* ViewController.m */; };
@@ -14,10 +15,13 @@
 		C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE61C1796E700D2645D /* Assets.xcassets */; };
 		C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */; };
 		C60F60001C17E52800D2645D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FFF1C17E52800D2645D /* Helper.m */; };
+		C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C6DA6C281C1A38CD005FBD89 /* Podfile */; };
 		FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBD376F1C1911B8001FBB52 /* CameraViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6E69F8DDFDB09EB02FEAADD5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C60F5FDD1C1796E700D2645D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -30,6 +34,8 @@
 		C60F5FEB1C1796E700D2645D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60F5FFE1C17E52800D2645D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = ../Helper.h; sourceTree = "<group>"; };
 		C60F5FFF1C17E52800D2645D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = ../Helper.m; sourceTree = "<group>"; };
+		C6DA6C281C1A38CD005FBD89 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		E851A27F2547482244E09418 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBBD376E1C1911B8001FBB52 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		FBBD376F1C1911B8001FBB52 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -39,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F9EAC0CC29F556A35F931E8 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12D3EBBED289AA39F4246274 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E69F8DDFDB09EB02FEAADD5 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8558E4C925DA8B62E8ECA04B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */,
+				E851A27F2547482244E09418 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C60F5FCE1C1796E700D2645D = {
 			isa = PBXGroup;
 			children = (
 				C60F5FD91C1796E700D2645D /* Nemo-Master */,
 				C60F5FD81C1796E700D2645D /* Products */,
+				8558E4C925DA8B62E8ECA04B /* Pods */,
+				12D3EBBED289AA39F4246274 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,6 +102,7 @@
 				C60F5FE61C1796E700D2645D /* Assets.xcassets */,
 				C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */,
 				C60F5FEB1C1796E700D2645D /* Info.plist */,
+				C6DA6C281C1A38CD005FBD89 /* Podfile */,
 				C60F5FDA1C1796E700D2645D /* Supporting Files */,
 			);
 			path = "Nemo-Master";
@@ -96,9 +123,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C60F5FEE1C1796E700D2645D /* Build configuration list for PBXNativeTarget "Nemo-Master" */;
 			buildPhases = (
+				044E7B1B2228C821C92F4604 /* Check Pods Manifest.lock */,
 				C60F5FD31C1796E700D2645D /* Sources */,
 				C60F5FD41C1796E700D2645D /* Frameworks */,
 				C60F5FD51C1796E700D2645D /* Resources */,
+				790B33142FDD1D9FC674D218 /* Embed Pods Frameworks */,
+				268A53DDD9B1F9A5E378E46C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,11 +179,60 @@
 			files = (
 				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
 				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
+				C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */,
 				C60F5FE51C1796E700D2645D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		044E7B1B2228C821C92F4604 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		268A53DDD9B1F9A5E378E46C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Nemo-Master/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		790B33142FDD1D9FC674D218 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Nemo-Master/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C60F5FD31C1796E700D2645D /* Sources */ = {
@@ -272,6 +351,7 @@
 		};
 		C60F5FEF1C1796E700D2645D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
@@ -283,6 +363,7 @@
 		};
 		C60F5FF01C1796E700D2645D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E851A27F2547482244E09418 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
