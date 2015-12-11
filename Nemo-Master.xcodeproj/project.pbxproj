@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
 		7F9EAC0CC29F556A35F931E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E69F8DDFDB09EB02FEAADD5 /* libPods.a */; };
 		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
 		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6E69F8DDFDB09EB02FEAADD5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 		C60F5FDA1C1796E700D2645D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				218CCC581C1A4DE600101CF4 /* XButton.png */,
 				C60F5FDB1C1796E700D2645D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -177,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				218CCC591C1A4DE600101CF4 /* XButton.png in Resources */,
 				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
 				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
 				C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */,
