@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
+		7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */; };
+		7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */; };
 		7F9EAC0CC29F556A35F931E8 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E69F8DDFDB09EB02FEAADD5 /* libPods.a */; };
 		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
 		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
@@ -24,6 +26,10 @@
 		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6E69F8DDFDB09EB02FEAADD5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EC0B3CF1C1A61E000A6C6E5 /* ParkingSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpot.h; sourceTree = "<group>"; };
+		7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpot.m; sourceTree = "<group>"; };
+		7EC0B3D31C1A6C0200A6C6E5 /* ParkingSpots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParkingSpots.h; path = ../ParkingSpots.h; sourceTree = "<group>"; };
+		7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParkingSpots.m; path = ../ParkingSpots.m; sourceTree = "<group>"; };
 		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C60F5FDD1C1796E700D2645D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -62,6 +68,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7EC0B3D21C1A65D400A6C6E5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7EC0B3D31C1A6C0200A6C6E5 /* ParkingSpots.h */,
+				7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */,
+				7EC0B3CF1C1A61E000A6C6E5 /* ParkingSpot.h */,
+				7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		8558E4C925DA8B62E8ECA04B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +109,7 @@
 		C60F5FD91C1796E700D2645D /* Nemo-Master */ = {
 			isa = PBXGroup;
 			children = (
+				7EC0B3D21C1A65D400A6C6E5 /* Models */,
 				C60F5FFE1C17E52800D2645D /* Helper.h */,
 				C60F5FFF1C17E52800D2645D /* Helper.m */,
 				C60F5FDD1C1796E700D2645D /* AppDelegate.h */,
@@ -245,8 +263,10 @@
 			files = (
 				FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */,
 				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
+				7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */,
 				C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */,
 				C60F5FDC1C1796E700D2645D /* main.m in Sources */,
+				7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */,
 				C60F60001C17E52800D2645D /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
