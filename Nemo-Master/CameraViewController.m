@@ -2,7 +2,7 @@
 //  CameraViewController.m
 //  Nemo-Master
 //
-//  Created by Kimberly Stickels on 12/9/15.
+//  Created by Jonathan Chen on 12/9/15.
 //  Copyright (c) 2015 Junhan Huang. All rights reserved.
 //
 
