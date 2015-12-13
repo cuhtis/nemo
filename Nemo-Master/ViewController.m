@@ -8,8 +8,11 @@
 
 #import "ViewController.h"
 #import "Helper.h"
+#import "ParkingSpot.h"
+#import "ParkingSpots.h"
+#import "AppDelegate.h"
 
-@interface ViewController ()
+@interface ViewController () <ParkingSpotModelDelegate>
 
 @end
 
@@ -17,7 +20,9 @@
 @implementation ViewController {
     CLLocationManager *locationManager;
 }
-
+- (ParkingSpots *)parkingSpots {
+    return [AppDelegate appDelegate].parkingSpots;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [self.mapUIView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     

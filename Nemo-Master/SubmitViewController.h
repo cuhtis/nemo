@@ -16,7 +16,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *LongField;
 @property (strong, nonatomic) IBOutlet UITextField *PriceField;
 
-
 - (IBAction)SubmitForm:(id)sender;
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
