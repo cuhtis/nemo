@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a1P-DK-DNJ">
-                                <rect key="frame" x="0.0" y="0.0" width="373" height="610"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="670"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEB-aZ-deF">
                                         <rect key="frame" x="8" y="8" width="30" height="30"/>

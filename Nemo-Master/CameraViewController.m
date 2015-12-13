@@ -87,6 +87,14 @@ AVCaptureStillImageOutput *StillImageOutput;
     }
 }
 
+-(void)hideStatusBar {
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (IBAction)takephoto:(id)sender{
     AVCaptureConnection *videoConnection = nil;
     for(AVCaptureConnection *connection in StillImageOutput.connections){
