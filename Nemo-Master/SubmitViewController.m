@@ -7,16 +7,23 @@
 //
 
 #import "SubmitViewController.h"
+#import "ParkingSpot.h"
+#import "ParkingSpots.h"
+#import "AppDelegate.h"
 
-@interface SubmitViewController ()
+@interface SubmitViewController () <ParkingSpotModelDelegate>
 
 @end
 
 @implementation SubmitViewController
 
+- (void) modelUpdated {
+    // DO NOTHING
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _SnapShot.image = [self decodeBase64ToImage:_EncodedImage];
+    _SnapShot.image = _snappedImage;
     
     // Do any additional setup after loading the view.
 }
@@ -26,10 +33,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData {
-    NSData *data = [[NSData alloc]initWithBase64EncodedString:strEncodeData options:NSDataBase64DecodingIgnoreUnknownCharacters];
-    return [UIImage imageWithData:data];
+- (ParkingSpots *)parkingSpots {
+    return [AppDelegate appDelegate].parkingSpots;
 }
+
 /*
 #pragma mark - Navigation
 
@@ -40,6 +47,16 @@
 }
 */
 
-
-
+- (IBAction)SubmitForm:(id)sender {
+    ParkingSpot *parkingSpot = [[ParkingSpot alloc] init];
+    [parkingSpot setImage:_snappedImage];
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    [parkingSpot setName:_NameField.text];
+    [parkingSpot setPrice:[f numberFromString:_PriceField.text]];
+    [parkingSpot setLongitude:[f numberFromString:_LongField.text]];
+    [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
+    [self.parkingSpots addParkingSpot:parkingSpot];
+    [self.parkingSpots persist:parkingSpot];
+}
 @end

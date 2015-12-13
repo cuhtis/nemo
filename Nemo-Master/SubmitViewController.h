@@ -10,8 +10,13 @@
 
 @interface SubmitViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIImageView *SnapShot;
-@property (strong, nonatomic) IBOutlet NSString *EncodedImage;
+@property (strong, nonatomic) IBOutlet UIImage *snappedImage;
+@property (strong, nonatomic) IBOutlet UITextField *NameField;
+@property (strong, nonatomic) IBOutlet UITextField *LatField;
+@property (strong, nonatomic) IBOutlet UITextField *LongField;
+@property (strong, nonatomic) IBOutlet UITextField *PriceField;
 
-- (UIImage *)decodeBase64ToImage:(NSString *)strEncodeData;
+
+- (IBAction)SubmitForm:(id)sender;
 
 @end

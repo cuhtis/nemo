@@ -17,6 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    self.parkingSpots = [[ParkingSpots alloc] init];
+    [self.parkingSpots import];
     
     [GMSServices provideAPIKey:@"AIzaSyBPICuBTfKlgqibI9d6leZvbXEnjrqfjaw"];
     return YES;
