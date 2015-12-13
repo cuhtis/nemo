@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import "SubmitViewController.h"
 
 @interface CameraViewController ()
 
@@ -59,6 +60,14 @@ AVCaptureStillImageOutput *StillImageOutput;
     
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"Submission"]){
+        SubmitViewController *controller = (SubmitViewController *)segue.destinationViewController;
+        
+        controller.snappedImage = imageView.image;
+        
+    }
+}
 
 - (IBAction)takephoto:(id)sender{
     AVCaptureConnection *videoConnection = nil;
