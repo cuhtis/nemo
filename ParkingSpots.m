@@ -39,6 +39,30 @@ static NSString* const kImages = @"photos";
     [self.objects addObject:parkingSpot];
 }
 
+- (void)loadImage:(ParkingSpot *)parkingSpot
+{
+    NSURL* url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kImages] stringByAppendingPathComponent:parkingSpot.imageId]];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDownloadTask* task = [session downloadTaskWithURL:url completionHandler:^(NSURL *fileLocation, NSURLResponse *response, NSError *error) {
+        if (!error) {
+            NSData* imageData = [NSData dataWithContentsOfURL:fileLocation];
+            UIImage* image = [UIImage imageWithData:imageData];
+            if (!image) {
+                NSLog(@"unable to build image");
+            }
+            parkingSpot.image = image;
+            if (self.delegate) {
+                [self.delegate modelUpdated];
+            }
+        }
+    }];
+    
+    [task resume];
+}
+
 - (void)import
 {
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kParkingSpots]];
@@ -63,8 +87,12 @@ static NSString* const kImages = @"photos";
 - (void)parseAndAddParkingSpots:(NSArray*)parkingSpots toArray:(NSMutableArray*)destinationArray
 {
     for (NSDictionary* item in parkingSpots) {
-        ParkingSpot* location = [[ParkingSpot alloc] initWithDictionary:item];
-        [destinationArray addObject:location];
+        ParkingSpot* parkingSpot = [[ParkingSpot alloc] initWithDictionary:item];
+        [destinationArray addObject:parkingSpot];
+        
+        if (parkingSpot.imageId) {
+            [self loadImage:parkingSpot];
+        }
     }
     
     if (self.delegate) {
