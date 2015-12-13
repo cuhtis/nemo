@@ -18,5 +18,6 @@
 
 
 - (IBAction)SubmitForm:(id)sender;
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end

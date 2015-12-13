@@ -21,6 +21,7 @@
     self = [super init];
     if (self) {
         _name = dictionary[@"name"];
+        _price = dictionary[@"price"];
         _latitude = dictionary[@"latitude"];
         _longitude = dictionary[@"longitude"];
         _zoom = dictionary[@"zoom"];
@@ -35,6 +36,7 @@
 {
     NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
     safeSet(jsonable, @"name", self.name);
+    safeSet(jsonable, @"price", self.price);
     safeSet(jsonable, @"latitude", self.latitude);
     safeSet(jsonable, @"longitude", self.longitude);
     safeSet(jsonable, @"zoom", self.zoom);
