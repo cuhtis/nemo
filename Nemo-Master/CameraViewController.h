@@ -15,5 +15,6 @@
 }
 
 - (IBAction)takephoto:(id)sender;
+- (NSString *)encodeToBase64String:(UIImage *)image;
 
 @end

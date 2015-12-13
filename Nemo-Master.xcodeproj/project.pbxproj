@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		212615FB1C1B5C9700DA4F02 /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */; };
 		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
 		7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */; };
 		7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		212615F91C1B5C9700DA4F02 /* SubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitViewController.h; sourceTree = "<group>"; };
+		212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
 		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		6E69F8DDFDB09EB02FEAADD5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +120,8 @@
 				C60F5FE01C1796E700D2645D /* ViewController.h */,
 				C60F5FE11C1796E700D2645D /* ViewController.m */,
 				C60F5FE31C1796E700D2645D /* Main.storyboard */,
+				212615F91C1B5C9700DA4F02 /* SubmitViewController.h */,
+				212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */,
 				FBBD376E1C1911B8001FBB52 /* CameraViewController.h */,
 				FBBD376F1C1911B8001FBB52 /* CameraViewController.m */,
 				C60F5FE61C1796E700D2645D /* Assets.xcassets */,
@@ -265,6 +270,7 @@
 				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
 				7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */,
 				C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */,
+				212615FB1C1B5C9700DA4F02 /* SubmitViewController.m in Sources */,
 				C60F5FDC1C1796E700D2645D /* main.m in Sources */,
 				7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */,
 				C60F60001C17E52800D2645D /* Helper.m in Sources */,

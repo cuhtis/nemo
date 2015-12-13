@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import "SubmitViewController.h"
 
 @interface CameraViewController ()
 
@@ -59,6 +60,18 @@ AVCaptureStillImageOutput *StillImageOutput;
     
 }
 
+- (NSString *)encodeToBase64String:(UIImage *)image {
+    return [UIImagePNGRepresentation(image) base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"Submission"]){
+        SubmitViewController *controller = (SubmitViewController *)segue.destinationViewController;
+        
+        controller.EncodedImage = [self encodeToBase64String:imageView.image];
+        
+    }
+}
 
 - (IBAction)takephoto:(id)sender{
     AVCaptureConnection *videoConnection = nil;
