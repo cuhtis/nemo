@@ -14,7 +14,6 @@
 @end
 
 
-
 @implementation ViewController {
     CLLocationManager *locationManager;
 }
@@ -56,8 +55,6 @@
     
     
     /* Setting Up Markers */
-    
-    self.mapUIView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);

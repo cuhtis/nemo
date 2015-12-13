@@ -209,6 +209,7 @@
                                         </state>
                                         <connections>
                                             <action selector="SubmitForm:" destination="1v6-UG-5Gg" eventType="touchUpInside" id="Iw0-kd-ns2"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="mnz-pK-uGF"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-PJ-e3P">
@@ -264,6 +265,9 @@
                                     <constraint firstAttribute="width" constant="54" id="5ic-0Q-apv"/>
                                 </constraints>
                                 <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="5ho-fn-TYn" kind="show" id="tBk-Bf-Ze8"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -298,4 +302,7 @@
         <image name="Nemo" width="24" height="24"/>
         <image name="XButton.png" width="48" height="48"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tBk-Bf-Ze8"/>
+    </inferredMetricsTieBreakers>
 </document>
