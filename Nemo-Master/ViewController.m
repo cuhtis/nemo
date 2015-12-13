@@ -8,8 +8,11 @@
 
 #import "ViewController.h"
 #import "Helper.h"
+#import "ParkingSpot.h"
+#import "ParkingSpots.h"
+#import "AppDelegate.h"
 
-@interface ViewController ()
+@interface ViewController () <ParkingSpotModelDelegate>
 
 @end
 
@@ -18,7 +21,9 @@
 @implementation ViewController {
     CLLocationManager *locationManager;
 }
-
+- (ParkingSpots *)parkingSpots {
+    return [AppDelegate appDelegate].parkingSpots;
+}
 - (void)viewWillAppear:(BOOL)animated {
     [self.mapUIView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     
@@ -55,15 +60,18 @@
     self.mapUIView.mapType = kGMSTypeNormal;
     
     
-    /* Setting Up Markers */
-    
     self.mapUIView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = self.mapUIView;
+    /* Setting Up Markers */
+    for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue], [[ps longitude] doubleValue]);
+        marker.title = [ps name];
+        marker.map = self.mapUIView;
+    }
+}
+
+- (void)modelUpdated {
     
 }
 

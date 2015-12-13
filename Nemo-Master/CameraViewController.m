@@ -64,6 +64,24 @@ AVCaptureStillImageOutput *StillImageOutput;
     if([segue.identifier isEqualToString:@"Submission"]){
         SubmitViewController *controller = (SubmitViewController *)segue.destinationViewController;
         
+        AVCaptureConnection *videoConnection = nil;
+        for(AVCaptureConnection *connection in StillImageOutput.connections){
+            for(AVCaptureInputPort *port in [connection inputPorts]){
+                if([[port mediaType] isEqual:AVMediaTypeVideo]){
+                    videoConnection = connection;
+                    break;
+                }
+            }
+        }
+        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+            if(imageDataSampleBuffer!=NULL){
+                NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+                UIImage *image = [UIImage imageWithData:imageData];
+                imageView.image = image;
+            }
+        }];
+        
+        
         controller.snappedImage = imageView.image;
         
     }
