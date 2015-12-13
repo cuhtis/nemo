@@ -17,7 +17,6 @@
 @end
 
 
-
 @implementation ViewController {
     CLLocationManager *locationManager;
 }
@@ -60,18 +59,13 @@
     self.mapUIView.mapType = kGMSTypeNormal;
     
     
-    self.mapUIView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
-    
     /* Setting Up Markers */
-    for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue], [[ps longitude] doubleValue]);
-        marker.title = [ps name];
-        marker.map = self.mapUIView;
-    }
-}
-
-- (void)modelUpdated {
+    
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
+    marker.title = @"Sydney";
+    marker.snippet = @"Australia";
+    marker.map = self.mapUIView;
     
 }
 
