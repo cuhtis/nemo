@@ -1,4 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.1'
 pod 'GoogleMaps'
-xcodeproj '/Users/curtis-li/Documents/Nemo/Nemo-Master.xcodeproj'
+xcodeproj '../Nemo-Master.xcodeproj'

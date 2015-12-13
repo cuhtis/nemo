@@ -20,6 +20,12 @@
 		C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */; };
 		C60F60001C17E52800D2645D /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FFF1C17E52800D2645D /* Helper.m */; };
 		C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C6DA6C281C1A38CD005FBD89 /* Podfile */; };
+		C6F8D3E31C1E151400C36DA5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3E21C1E151400C36DA5 /* CoreLocation.framework */; };
+		C6F8D3E71C1E155500C36DA5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3E61C1E155500C36DA5 /* MapKit.framework */; };
+		C6F8D3E91C1E155C00C36DA5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3E81C1E155C00C36DA5 /* CoreData.framework */; };
+		C6F8D3ED1C1E182700C36DA5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3EC1C1E182700C36DA5 /* UIKit.framework */; };
+		C6F8D3EF1C1E183600C36DA5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3EE1C1E183600C36DA5 /* CoreGraphics.framework */; };
+		C6F8D3F11C1E184200C36DA5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6F8D3F01C1E184200C36DA5 /* Foundation.framework */; };
 		FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBBD376F1C1911B8001FBB52 /* CameraViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +52,14 @@
 		C60F5FFE1C17E52800D2645D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = ../Helper.h; sourceTree = "<group>"; };
 		C60F5FFF1C17E52800D2645D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = ../Helper.m; sourceTree = "<group>"; };
 		C6DA6C281C1A38CD005FBD89 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		C6F8D3E21C1E151400C36DA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C6F8D3E41C1E155100C36DA5 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		C6F8D3E61C1E155500C36DA5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C6F8D3E81C1E155C00C36DA5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C6F8D3EA1C1E156300C36DA5 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C6F8D3EC1C1E182700C36DA5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C6F8D3EE1C1E183600C36DA5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C6F8D3F01C1E184200C36DA5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E851A27F2547482244E09418 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FBBD376E1C1911B8001FBB52 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
 		FBBD376F1C1911B8001FBB52 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
@@ -56,6 +70,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6F8D3F11C1E184200C36DA5 /* Foundation.framework in Frameworks */,
+				C6F8D3EF1C1E183600C36DA5 /* CoreGraphics.framework in Frameworks */,
+				C6F8D3ED1C1E182700C36DA5 /* UIKit.framework in Frameworks */,
+				C6F8D3E91C1E155C00C36DA5 /* CoreData.framework in Frameworks */,
+				C6F8D3E71C1E155500C36DA5 /* MapKit.framework in Frameworks */,
+				C6F8D3E31C1E151400C36DA5 /* CoreLocation.framework in Frameworks */,
 				4F51377180B90D98FD02AAC6 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +86,14 @@
 		12D3EBBED289AA39F4246274 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C6F8D3F01C1E184200C36DA5 /* Foundation.framework */,
+				C6F8D3EE1C1E183600C36DA5 /* CoreGraphics.framework */,
+				C6F8D3EC1C1E182700C36DA5 /* UIKit.framework */,
+				C6F8D3EA1C1E156300C36DA5 /* AVFoundation.framework */,
+				C6F8D3E81C1E155C00C36DA5 /* CoreData.framework */,
+				C6F8D3E61C1E155500C36DA5 /* MapKit.framework */,
+				C6F8D3E41C1E155100C36DA5 /* GLKit.framework */,
+				C6F8D3E21C1E151400C36DA5 /* CoreLocation.framework */,
 				B72E17892805A4FE3B8F1183 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -176,7 +204,7 @@
 				TargetAttributes = {
 					C60F5FD61C1796E700D2645D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = Y2D734M289;
+						DevelopmentTeam = 9U23L6BV7T;
 					};
 				};
 			};
@@ -388,7 +416,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -403,7 +431,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
