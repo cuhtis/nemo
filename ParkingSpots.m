@@ -8,10 +8,11 @@
 
 #import "ParkingSpots.h"
 #import "ParkingSpot.h"
+#import <UIKit/UIKit.h>
 
 static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
-static NSString* const kParkingSpots = @"parkingspot";
-static NSString* const kFiles = @"files";
+static NSString* const kParkingSpots = @"parkingspots";
+static NSString* const kImages = @"photos";
 
 @interface ParkingSpots ()
 @property (nonatomic, strong) NSMutableArray* objects;
@@ -71,18 +72,39 @@ static NSString* const kFiles = @"files";
     }
 }
 
+- (void) saveNewImageFirst:(ParkingSpot*)parkingSpot
+{
+    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kImages]];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request addValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSData* bytes = UIImagePNGRepresentation(parkingSpot.image);
+    NSURLSessionUploadTask* task = [session uploadTaskWithRequest:request fromData:bytes completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        if (error == nil && [(NSHTTPURLResponse*)response statusCode] < 300) {
+            NSDictionary* responseDict = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            parkingSpot.imageId = responseDict[@"_id"];
+            [self persist:parkingSpot];
+        }
+    }];
+    [task resume];
+}
+
 - (void) persist:(ParkingSpot*)parkingSpot
 {
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check
     }
     
-    /**if there is an image, save it first
+    // if there is an image, save it first
     if (parkingSpot.image != nil && parkingSpot.imageId == nil) {
-        [self saveNewLocationImageFirst:location];
+        [self saveNewImageFirst:parkingSpot];
         return;
     }
-     **/
+    
     
     NSString* parkingSpots = [kBaseURL stringByAppendingPathComponent:kParkingSpots];
     

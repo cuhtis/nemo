@@ -11,8 +11,6 @@
 
 @implementation ParkingSpot
 
-NSString *kBaseURL = @"http://nemo-server.herokuapp.com";
-
 - (id) init {
     self = [super init];
     return self;
@@ -27,6 +25,8 @@ NSString *kBaseURL = @"http://nemo-server.herokuapp.com";
         _longitude = dictionary[@"longitude"];
         _zoom = dictionary[@"zoom"];
         __id = dictionary[@"_id"];
+        _image = dictionary[@"image"];
+        _imageId = dictionary[@"imageId"];
     }
     return self;
 }
@@ -39,6 +39,8 @@ NSString *kBaseURL = @"http://nemo-server.herokuapp.com";
     safeSet(jsonable, @"longitude", self.longitude);
     safeSet(jsonable, @"zoom", self.zoom);
     safeSet(jsonable, @"_id", self._id);
+    safeSet(jsonable, @"image", self.image);
+    safeSet(jsonable, @"imageId", self.imageId);
     return jsonable;
 }
 

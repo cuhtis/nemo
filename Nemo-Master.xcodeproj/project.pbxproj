@@ -109,7 +109,6 @@
 		C60F5FD91C1796E700D2645D /* Nemo-Master */ = {
 			isa = PBXGroup;
 			children = (
-				7EC0B3D21C1A65D400A6C6E5 /* Models */,
 				C60F5FFE1C17E52800D2645D /* Helper.h */,
 				C60F5FFF1C17E52800D2645D /* Helper.m */,
 				C60F5FDD1C1796E700D2645D /* AppDelegate.h */,
@@ -123,6 +122,7 @@
 				C60F5FE81C1796E700D2645D /* LaunchScreen.storyboard */,
 				C60F5FEB1C1796E700D2645D /* Info.plist */,
 				C6DA6C281C1A38CD005FBD89 /* Podfile */,
+				7EC0B3D21C1A65D400A6C6E5 /* Models */,
 				C60F5FDA1C1796E700D2645D /* Supporting Files */,
 			);
 			path = "Nemo-Master";
