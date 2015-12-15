@@ -31,13 +31,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     UIImage *nemo = [UIImage imageNamed:@"Nemo"];
     UIImage *camera = [UIImage imageNamed:@"Camera"];
     [Helper customizeBarButton:self.fishButton image:nemo highlightedImage:nemo];
     [Helper customizeBarButton:self.cameraButton image:camera highlightedImage:camera];
-    
+    self.mainToolBar.clipsToBounds = YES;
+
     
     // Getting My Location
     //Instantiate a location object.
@@ -59,13 +59,18 @@
     self.mapUIView.mapType = kGMSTypeNormal;
     
     
-    /* Setting Up Markers */
+    self.mapUIView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = self.mapUIView;
+    /* Setting Up Markers */
+    for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue], [[ps longitude] doubleValue]);
+        marker.title = [ps name];
+        marker.map = self.mapUIView;
+    }
+}
+
+- (void)modelUpdated {
     
 }
 
