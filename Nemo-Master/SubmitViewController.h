@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+@import CoreLocation;
 
-@interface SubmitViewController : UIViewController
+@interface SubmitViewController : UIViewController <CLLocationManagerDelegate>
+
 @property (strong, nonatomic) IBOutlet UIImageView *SnapShot;
 @property (strong, nonatomic) IBOutlet UIImage *snappedImage;
 @property (strong, nonatomic) IBOutlet UITextField *NameField;

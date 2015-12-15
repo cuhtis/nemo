@@ -16,6 +16,7 @@
 @end
 
 @implementation SubmitViewController
+CLLocationManager *locationManager;
 @synthesize scrollView;
 
 
@@ -26,9 +27,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    /* Get Current Location */
+    locationManager = [[CLLocationManager alloc] init];
+    [locationManager setDelegate:self];
+    
+    //Set some parameters for the location object.
+    [locationManager setDistanceFilter:kCLDistanceFilterNone];
+    [locationManager setDesiredAccuracy: kCLLocationAccuracyBest];
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+    
+    /* Submit Parking Entry */
     _SnapShot.image = _snappedImage;
     
-    // Do any additional setup after loading the view.
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
@@ -63,15 +75,25 @@
     [_PriceField resignFirstResponder];
 }
 
-/*
-#pragma mark - Navigation
+// Ask the CLLocationManager for location authorization,
+// and be sure to retain the manager somewhere on the class
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)requestLocationAuthorization
+{
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    
+    [locationManager requestAlwaysAuthorization];
 }
-*/
+
+- (void)locationManager: (CLLocationManager *) manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        _LatField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
+        _LongField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
+    }
+}
+
 
 - (IBAction)SubmitForm:(id)sender {
     ParkingSpot *parkingSpot = [[ParkingSpot alloc] init];
