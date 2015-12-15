@@ -20,6 +20,10 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _retakeBut.hidden=YES;
+    _retakeBut.enabled=NO;
+    _submitBut.hidden=YES;
+    _submitBut.enabled=NO;
     // Do any additional setup after loading the view.
 }
 
@@ -61,27 +65,8 @@ AVCaptureStillImageOutput *StillImageOutput;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"Submission"]){
+    if([segue.identifier isEqualToString:@"snap"]){
         SubmitViewController *controller = (SubmitViewController *)segue.destinationViewController;
-        
-        AVCaptureConnection *videoConnection = nil;
-        for(AVCaptureConnection *connection in StillImageOutput.connections){
-            for(AVCaptureInputPort *port in [connection inputPorts]){
-                if([[port mediaType] isEqual:AVMediaTypeVideo]){
-                    videoConnection = connection;
-                    break;
-                }
-            }
-        }
-        [StillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnection completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
-            if(imageDataSampleBuffer!=NULL){
-                NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
-                UIImage *image = [UIImage imageWithData:imageData];
-                imageView.image = image;
-            }
-        }];
-        
-        
         controller.snappedImage = imageView.image;
         
     }
@@ -113,7 +98,22 @@ AVCaptureStillImageOutput *StillImageOutput;
         }
     }];
     
-    
+    _retakeBut.hidden=NO;
+    _retakeBut.enabled=YES;
+    _submitBut.hidden=NO;
+    _submitBut.enabled=YES;
+    _snapBut.hidden=YES;
+    _snapBut.enabled=NO;
+}
+
+- (IBAction)retakephoto:(id)sender {
+    _snapBut.hidden=NO;
+    _snapBut.enabled=YES;
+    _retakeBut.hidden=YES;
+    _retakeBut.enabled=NO;
+    _submitBut.hidden=YES;
+    _submitBut.enabled=NO;
+    imageView.image=nil;
 }
 /*
 #pragma mark - Navigation
