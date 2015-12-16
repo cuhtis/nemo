@@ -62,10 +62,11 @@
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
+    self.mapView.delegate = self;
     [self modelUpdated];
 }
 
-- (UIView *) mapView:(GMSMapView *)mapView markerInfoContents:(GMSMarker *)marker {
+- (UIView *) mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     NSLog(@"Marker info");
     CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
     
@@ -80,8 +81,11 @@
 
 - (void)modelUpdated {
     // UPDATE MARKERS
+    NSLog(@"modelUpdated");
     dispatch_async(dispatch_get_main_queue(),
     ^{
+        NSLog(@"AsyncDispatch");
+        self.mapView.delegate = self;
         [self.mapView clear];
         for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
             GMSMarker *marker = [[GMSMarker alloc] init];
@@ -92,6 +96,7 @@
             marker.title = ps.name;
             
             marker.map = self.mapView;
+            NSLog(@"Add marker");
         }
         NSLog(@"Done importing");
     });
@@ -143,6 +148,10 @@
         
         firstLocationUpdate_ = YES;
     }
+}
+
+- (IBAction)refresh:(id)sender {
+    [self modelUpdated];
 }
 
 - (void)dealloc {

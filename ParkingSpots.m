@@ -51,7 +51,7 @@ static NSString* const kFiles = @"files";
     [transformation setWidthWithInt: 100];
     [transformation setHeightWithInt: 150];
     [transformation setCrop: @"fill"];
-    NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot._id] options:@{@"transformation": transformation}]];
+    NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot.imageId] options:@{@"transformation": transformation}]];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
