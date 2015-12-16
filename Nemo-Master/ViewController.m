@@ -11,6 +11,7 @@
 #import "ParkingSpot.h"
 #import "ParkingSpots.h"
 #import "AppDelegate.h"
+#import "CustomInfoWindow.h"
 
 @interface ViewController () <ParkingSpotModelDelegate>
 
@@ -31,6 +32,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self parkingSpots].delegate = self;
     
     UIImage *nemo = [UIImage imageNamed:@"Nemo"];
     UIImage *camera = [UIImage imageNamed:@"Camera"];
@@ -62,17 +65,31 @@
     self.mapUIView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
-    for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue], [[ps longitude] doubleValue]);
-        marker.title = [ps name];
-        marker.snippet = [NSString stringWithFormat:@"Price: $%@", [ps price]];
-        marker.map = self.mapUIView;
-    }
+    
+}
+
+- (UIView *) mapView:(GMSMapView *)mapView markerInfoContents:(GMSMarker *)marker {
+    CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
+    ParkingSpot *parkingSpot = marker.userData;
+    infoWindow.address.text = parkingSpot.name;
+    infoWindow.price.text = [NSString stringWithFormat:@"$%@", parkingSpot.price];
+    infoWindow.image.image = parkingSpot.image;
+    return infoWindow;
 }
 
 - (void)modelUpdated {
-    
+    // UPDATE MARKERS
+    dispatch_async(dispatch_get_main_queue(),
+    ^{
+        for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
+                                                         [[ps longitude] doubleValue]);
+            marker.userData = ps;
+            marker.map = self.mapUIView;
+        }
+    });
+    NSLog(@"Done importing");
 }
 
 - (void)enableMyLocation

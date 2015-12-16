@@ -10,8 +10,11 @@
 		212615FB1C1B5C9700DA4F02 /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */; };
 		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
 		4F51377180B90D98FD02AAC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E17892805A4FE3B8F1183 /* libPods.a */; };
+		7E5463DC1C21C7A3009CD1CC /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */; };
+		7E5463DF1C21C964009CD1CC /* CustomInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5463DE1C21C964009CD1CC /* CustomInfoWindow.m */; };
 		7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */; };
 		7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */; };
+		7EDBAE531C20EEDF00B09C26 /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */; };
 		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
 		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
 		C60F5FE21C1796E700D2645D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FE11C1796E700D2645D /* ViewController.m */; };
@@ -34,10 +37,14 @@
 		212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
 		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
+		7E5463DD1C21C964009CD1CC /* CustomInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfoWindow.h; sourceTree = "<group>"; };
+		7E5463DE1C21C964009CD1CC /* CustomInfoWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomInfoWindow.m; sourceTree = "<group>"; };
 		7EC0B3CF1C1A61E000A6C6E5 /* ParkingSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpot.h; sourceTree = "<group>"; };
 		7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpot.m; sourceTree = "<group>"; };
 		7EC0B3D31C1A6C0200A6C6E5 /* ParkingSpots.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParkingSpots.h; path = ../ParkingSpots.h; sourceTree = "<group>"; };
 		7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParkingSpots.m; path = ../ParkingSpots.m; sourceTree = "<group>"; };
+		7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudinary.a; sourceTree = "<group>"; };
 		B72E17892805A4FE3B8F1183 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -77,6 +84,7 @@
 				C6F8D3E71C1E155500C36DA5 /* MapKit.framework in Frameworks */,
 				C6F8D3E31C1E151400C36DA5 /* CoreLocation.framework in Frameworks */,
 				4F51377180B90D98FD02AAC6 /* libPods.a in Frameworks */,
+				7EDBAE531C20EEDF00B09C26 /* libCloudinary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +94,7 @@
 		12D3EBBED289AA39F4246274 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */,
 				C6F8D3F01C1E184200C36DA5 /* Foundation.framework */,
 				C6F8D3EE1C1E183600C36DA5 /* CoreGraphics.framework */,
 				C6F8D3EC1C1E182700C36DA5 /* UIKit.framework */,
@@ -146,6 +155,9 @@
 				C60F5FDE1C1796E700D2645D /* AppDelegate.m */,
 				C60F5FE01C1796E700D2645D /* ViewController.h */,
 				C60F5FE11C1796E700D2645D /* ViewController.m */,
+				7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */,
+				7E5463DD1C21C964009CD1CC /* CustomInfoWindow.h */,
+				7E5463DE1C21C964009CD1CC /* CustomInfoWindow.m */,
 				C60F5FE31C1796E700D2645D /* Main.storyboard */,
 				212615F91C1B5C9700DA4F02 /* SubmitViewController.h */,
 				212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */,
@@ -231,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5463DC1C21C7A3009CD1CC /* InfoWindow.xib in Resources */,
 				218CCC591C1A4DE600101CF4 /* XButton.png in Resources */,
 				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
 				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
@@ -294,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E5463DF1C21C964009CD1CC /* CustomInfoWindow.m in Sources */,
 				FBBD37701C1911B8001FBB52 /* CameraViewController.m in Sources */,
 				C60F5FE21C1796E700D2645D /* ViewController.m in Sources */,
 				7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */,
@@ -416,6 +430,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -431,6 +449,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Nemo-Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

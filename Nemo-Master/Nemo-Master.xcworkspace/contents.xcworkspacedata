@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Cloudinary/Cloudinary.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:../Nemo-Master.xcodeproj">
    </FileRef>
    <FileRef

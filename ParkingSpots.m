@@ -9,22 +9,28 @@
 #import "ParkingSpots.h"
 #import "ParkingSpot.h"
 #import <UIKit/UIKit.h>
+#import "Cloudinary/Cloudinary.h"
+
 
 static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
 static NSString* const kParkingSpots = @"parkingspots";
 static NSString* const kFiles = @"files";
 
-@interface ParkingSpots ()
+@interface ParkingSpots () <CLUploaderDelegate>
 @property (nonatomic, strong) NSMutableArray* objects;
+@property (nonatomic, strong) CLCloudinary *cloudinary;
+@property (nonatomic, strong) CLUploader* uploader;
 @end
 
-@implementation ParkingSpots
+@implementation ParkingSpots 
 
 - (id)init
 {
     self = [super init];
     if (self) {
         _objects = [NSMutableArray array];
+        _cloudinary = [[CLCloudinary alloc] initWithUrl: @"cloudinary://265243673751934:nk-B3zZLuFLdadYLOdTOKVWCGLY@heuthqgbj"];
+        _uploader = [[CLUploader alloc] init:_cloudinary delegate:self];
     }
     return self;
 }
@@ -41,7 +47,11 @@ static NSString* const kFiles = @"files";
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
-    NSURL* url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kFiles] stringByAppendingPathComponent:parkingSpot.imageId]];
+    CLTransformation *transformation = [CLTransformation transformation];
+    [transformation setWidthWithInt: 100];
+    [transformation setHeightWithInt: 150];
+    [transformation setCrop: @"fill"];
+    NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot._id] options:@{@"transformation": transformation}]];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
@@ -55,7 +65,10 @@ static NSString* const kFiles = @"files";
             }
             parkingSpot.image = image;
             if (self.delegate) {
+                NSLog(@"Update delegate");
                 [self.delegate modelUpdated];
+            } else {
+                NSLog(@"No delegate found");
             }
         }
     }];
@@ -97,6 +110,7 @@ static NSString* const kFiles = @"files";
     
     if (self.delegate) {
         [self.delegate modelUpdated];
+        NSLog(@"Model updated");
     }
 }
 
@@ -123,18 +137,14 @@ static NSString* const kFiles = @"files";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
-    NSLog(@"Adding Parking spot...");
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check
     }
     
+    BOOL hasNewImage = (parkingSpot.image != nil && parkingSpot.imageId == nil);
+    
     // if there is an image, save it first
-    if (parkingSpot.image != nil && parkingSpot.imageId == nil) {
-        NSLog(@"Save Image first");
-        [self saveNewImageFirst:parkingSpot];
-        return;
-    }
-    NSLog(@"Save Parking Spot");
+    if (hasNewImage) parkingSpot.imageId = parkingSpot._id;
     
     NSString* parkingSpots = [kBaseURL stringByAppendingPathComponent:kParkingSpots];
     
@@ -155,8 +165,13 @@ static NSString* const kFiles = @"files";
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
-            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            if (hasNewImage) {
+                NSData* bytes = UIImagePNGRepresentation(parkingSpot.image);
+                [self.uploader upload:bytes options:@{@"public_id": parkingSpot._id}];
+            }
+        
             NSLog(@"Update objects list");
+            NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
             [self parseAndAddParkingSpots:responseArray toArray:self.objects];
         }
     }];
