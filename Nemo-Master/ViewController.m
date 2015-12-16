@@ -31,6 +31,10 @@
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    firstLocationUpdate_ = NO;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -41,8 +45,6 @@
     [Helper customizeBarButton:self.fishButton image:nemo highlightedImage:nemo];
     [Helper customizeBarButton:self.cameraButton image:camera highlightedImage:camera];
     self.mainToolBar.clipsToBounds = YES;
-    
-    
     
     // Getting My Location
     //Instantiate a location object.
