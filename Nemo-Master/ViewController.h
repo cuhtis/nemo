@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *fishButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (weak, nonatomic) IBOutlet UIToolbar *mainToolBar;
-@property (strong, nonatomic) IBOutlet GMSMapView *mapUIView;
+@property (strong, nonatomic) IBOutlet GMSMapView *mapView;
 
 
 @end
