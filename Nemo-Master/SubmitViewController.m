@@ -38,8 +38,8 @@ CLLocationManager *locationManager;
     
     /* Submit Parking Entry */
     _SnapShot.image = _snappedImage;
-    
-    
+    _SnapShot.hidden = YES;
+        
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
                                    initWithTarget:self
                                    action:@selector(dismissKeyboard)];

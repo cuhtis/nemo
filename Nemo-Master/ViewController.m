@@ -124,7 +124,7 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    NSLog(@"gets called");
+    //NSLog(@"gets called");
     if (!firstLocationUpdate_) {
         
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
