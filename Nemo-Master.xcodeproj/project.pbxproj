@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		212615FB1C1B5C9700DA4F02 /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */; };
-		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
 		4F51377180B90D98FD02AAC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E17892805A4FE3B8F1183 /* libPods.a */; };
 		7E5463DC1C21C7A3009CD1CC /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */; };
 		7E5463DF1C21C964009CD1CC /* CustomInfoWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E5463DE1C21C964009CD1CC /* CustomInfoWindow.m */; };
@@ -35,7 +34,6 @@
 /* Begin PBXFileReference section */
 		212615F91C1B5C9700DA4F02 /* SubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitViewController.h; sourceTree = "<group>"; };
 		212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
-		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
 		7E5463DD1C21C964009CD1CC /* CustomInfoWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomInfoWindow.h; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 		C60F5FDA1C1796E700D2645D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				218CCC581C1A4DE600101CF4 /* XButton.png */,
 				C60F5FDB1C1796E700D2645D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -216,7 +213,7 @@
 				TargetAttributes = {
 					C60F5FD61C1796E700D2645D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = Y2D734M289;
+						DevelopmentTeam = 9U23L6BV7T;
 					};
 				};
 			};

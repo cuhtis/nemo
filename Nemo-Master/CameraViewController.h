@@ -18,5 +18,6 @@
 
 - (IBAction)takephoto:(id)sender;
 - (IBAction)retakephoto:(id)sender;
+-(IBAction)unwindtoCamera:(UIStoryboardSegue *)segue;
 
 @end
