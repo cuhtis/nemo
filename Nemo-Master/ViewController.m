@@ -27,7 +27,6 @@
     return [AppDelegate appDelegate].parkingSpots;
 }
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"first");
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     
 }
@@ -58,22 +57,24 @@
     NSLog(@"created locationManager");
     
     // Google Map View
-    NSLog(@"dwadawd");
     
     _mapView.settings.compassButton = YES;
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
-    
     /* Setting Up Markers */
-    
+    [self modelUpdated];
 }
 
 - (UIView *) mapView:(GMSMapView *)mapView markerInfoContents:(GMSMarker *)marker {
+    NSLog(@"Marker info");
     CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
+    
     ParkingSpot *parkingSpot = marker.userData;
+    
     infoWindow.address.text = parkingSpot.name;
     infoWindow.price.text = [NSString stringWithFormat:@"$%@", parkingSpot.price];
     infoWindow.image.image = parkingSpot.image;
+    
     return infoWindow;
 }
 
@@ -81,15 +82,19 @@
     // UPDATE MARKERS
     dispatch_async(dispatch_get_main_queue(),
     ^{
+        [self.mapView clear];
         for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
                                                          [[ps longitude] doubleValue]);
             marker.userData = ps;
-            marker.map = self.mapUIView;
+            marker.icon = [UIImage imageNamed:@"Nemo"];
+            marker.title = ps.name;
+            
+            marker.map = self.mapView;
         }
+        NSLog(@"Done importing");
     });
-    NSLog(@"Done importing");
 }
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {

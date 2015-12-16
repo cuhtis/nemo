@@ -16,7 +16,7 @@ static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
 static NSString* const kParkingSpots = @"parkingspots";
 static NSString* const kFiles = @"files";
 
-@interface ParkingSpots () <CLUploaderDelegate>
+@interface ParkingSpots ()
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) CLCloudinary *cloudinary;
 @property (nonatomic, strong) CLUploader* uploader;
@@ -137,14 +137,20 @@ static NSString* const kFiles = @"files";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
+    
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check
     }
     
-    BOOL hasNewImage = (parkingSpot.image != nil && parkingSpot.imageId == nil);
-    
-    // if there is an image, save it first
-    if (hasNewImage) parkingSpot.imageId = parkingSpot._id;
+    //if there is an image, save it too
+    if (parkingSpot.image != nil && parkingSpot.imageId == nil) {
+        NSData* bytes = UIImagePNGRepresentation(parkingSpot.image);
+        [self.uploader upload:bytes options:0 withCompletion:^(NSDictionary *successResult, NSString *errorResult, NSInteger code, id context){
+            parkingSpot.imageId = [successResult valueForKey:@"public_id"];
+            [self persist:parkingSpot];
+        } andProgress:nil];
+        return;
+    }
     
     NSString* parkingSpots = [kBaseURL stringByAppendingPathComponent:kParkingSpots];
     
@@ -165,12 +171,8 @@ static NSString* const kFiles = @"files";
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
-            if (hasNewImage) {
-                NSData* bytes = UIImagePNGRepresentation(parkingSpot.image);
-                [self.uploader upload:bytes options:@{@"public_id": parkingSpot._id}];
-            }
-        
             NSLog(@"Update objects list");
+            
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
             [self parseAndAddParkingSpots:responseArray toArray:self.objects];
         }
