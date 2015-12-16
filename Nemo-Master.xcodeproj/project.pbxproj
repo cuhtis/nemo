@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		212615FB1C1B5C9700DA4F02 /* SubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */; };
-		218CCC591C1A4DE600101CF4 /* XButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 218CCC581C1A4DE600101CF4 /* XButton.png */; };
 		4F51377180B90D98FD02AAC6 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B72E17892805A4FE3B8F1183 /* libPods.a */; };
 		7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */; };
 		7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */; };
@@ -32,7 +31,6 @@
 /* Begin PBXFileReference section */
 		212615F91C1B5C9700DA4F02 /* SubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubmitViewController.h; sourceTree = "<group>"; };
 		212615FA1C1B5C9700DA4F02 /* SubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubmitViewController.m; sourceTree = "<group>"; };
-		218CCC581C1A4DE600101CF4 /* XButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = XButton.png; sourceTree = "<group>"; };
 		5D440E109A622E6A9FA3B119 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Nemo-Master/Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		7EC0B3CF1C1A61E000A6C6E5 /* ParkingSpot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkingSpot.h; sourceTree = "<group>"; };
 		7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkingSpot.m; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 		C60F5FDA1C1796E700D2645D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				218CCC581C1A4DE600101CF4 /* XButton.png */,
 				C60F5FDB1C1796E700D2645D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -231,7 +228,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				218CCC591C1A4DE600101CF4 /* XButton.png in Resources */,
 				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
 				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
 				C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */,

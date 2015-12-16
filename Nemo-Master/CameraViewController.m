@@ -115,6 +115,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     _submitBut.enabled=NO;
     imageView.image=nil;
 }
+
+-(IBAction)unwindtoCamera:(UIStoryboardSegue *)segue{}
 /*
 #pragma mark - Navigation
 
