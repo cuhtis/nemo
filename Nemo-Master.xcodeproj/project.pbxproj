@@ -14,6 +14,7 @@
 		7EC0B3D11C1A61E000A6C6E5 /* ParkingSpot.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D01C1A61E000A6C6E5 /* ParkingSpot.m */; };
 		7EC0B3D51C1A6C0200A6C6E5 /* ParkingSpots.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */; };
 		7EDBAE531C20EEDF00B09C26 /* libCloudinary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */; };
+		C6033AE61C220040005CFB77 /* Cloudinary in Resources */ = {isa = PBXBuildFile; fileRef = C6033AE51C220040005CFB77 /* Cloudinary */; };
 		C60F5FDC1C1796E700D2645D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDB1C1796E700D2645D /* main.m */; };
 		C60F5FDF1C1796E700D2645D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FDE1C1796E700D2645D /* AppDelegate.m */; };
 		C60F5FE21C1796E700D2645D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C60F5FE11C1796E700D2645D /* ViewController.m */; };
@@ -44,6 +45,7 @@
 		7EC0B3D41C1A6C0200A6C6E5 /* ParkingSpots.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParkingSpots.m; path = ../ParkingSpots.m; sourceTree = "<group>"; };
 		7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudinary.a; sourceTree = "<group>"; };
 		B72E17892805A4FE3B8F1183 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6033AE51C220040005CFB77 /* Cloudinary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cloudinary; sourceTree = "<group>"; };
 		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C60F5FDD1C1796E700D2645D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		C60F5FCE1C1796E700D2645D = {
 			isa = PBXGroup;
 			children = (
+				C6033AE51C220040005CFB77 /* Cloudinary */,
 				C60F5FD91C1796E700D2645D /* Nemo-Master */,
 				C60F5FD81C1796E700D2645D /* Products */,
 				8558E4C925DA8B62E8ECA04B /* Pods */,
@@ -213,7 +216,7 @@
 				TargetAttributes = {
 					C60F5FD61C1796E700D2645D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = Y2D734M289;
+						DevelopmentTeam = 9U23L6BV7T;
 					};
 				};
 			};
@@ -242,6 +245,7 @@
 			files = (
 				7E5463DC1C21C7A3009CD1CC /* InfoWindow.xib in Resources */,
 				C60F5FEA1C1796E700D2645D /* LaunchScreen.storyboard in Resources */,
+				C6033AE61C220040005CFB77 /* Cloudinary in Resources */,
 				C60F5FE71C1796E700D2645D /* Assets.xcassets in Resources */,
 				C6DA6C291C1A38CD005FBD89 /* Podfile in Resources */,
 				C60F5FE51C1796E700D2645D /* Main.storyboard in Resources */,
@@ -430,7 +434,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -449,7 +453,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
