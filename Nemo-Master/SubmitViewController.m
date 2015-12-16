@@ -102,7 +102,7 @@ CLLocationManager *locationManager;
     [parkingSpot setPrice:[f numberFromString:_PriceField.text]];
     [parkingSpot setLongitude:[f numberFromString:_LongField.text]];
     [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
-    //[self.parkingSpots addParkingSpot:parkingSpot];
+    [self.parkingSpots addParkingSpot:parkingSpot];
     [self.parkingSpots persist:parkingSpot];
 }
 @end

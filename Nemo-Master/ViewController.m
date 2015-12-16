@@ -27,6 +27,7 @@
     return [AppDelegate appDelegate].parkingSpots;
 }
 - (void)viewWillAppear:(BOOL)animated {
+    firstLocationUpdate_ = NO;
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     
 }
@@ -73,7 +74,7 @@
     ParkingSpot *parkingSpot = marker.userData;
     
     infoWindow.address.text = parkingSpot.name;
-    infoWindow.price.text = [NSString stringWithFormat:@"$%@", parkingSpot.price];
+    infoWindow.price.text = parkingSpot.price ? [NSString stringWithFormat:@"$%@", parkingSpot.price] : @"$0";
     infoWindow.image.image = parkingSpot.image;
     
     return infoWindow;

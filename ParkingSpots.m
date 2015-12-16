@@ -16,7 +16,7 @@ static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
 static NSString* const kParkingSpots = @"parkingspots";
 static NSString* const kFiles = @"files";
 
-@interface ParkingSpots ()
+@interface ParkingSpots () <CLUploaderDelegate>
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) CLCloudinary *cloudinary;
 @property (nonatomic, strong) CLUploader* uploader;
@@ -48,9 +48,10 @@ static NSString* const kFiles = @"files";
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
     CLTransformation *transformation = [CLTransformation transformation];
-    [transformation setWidthWithInt: 100];
-    [transformation setHeightWithInt: 150];
-    [transformation setCrop: @"fill"];
+    [transformation setParams: @{@"width": @200,
+                                 @"height": @234,
+                                 @"angle": @90,
+                                 @"crop": @"thumb"}];
     NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot.imageId] options:@{@"transformation": transformation}]];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
