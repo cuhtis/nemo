@@ -66,6 +66,7 @@
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue], [[ps longitude] doubleValue]);
         marker.title = [ps name];
+        marker.snippet = [NSString stringWithFormat:@"Price: $%@", [ps price]];
         marker.map = self.mapUIView;
     }
 }
@@ -134,7 +135,7 @@
     if([keyPath isEqualToString:@"myLocation"]) {
         CLLocation *location = [object myLocation];
         //...
-        NSLog(@"Location, %@,", location);
+        //NSLog(@"Location, %@,", location);
         
         CLLocationCoordinate2D target =
         CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);

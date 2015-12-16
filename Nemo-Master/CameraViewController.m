@@ -95,15 +95,15 @@ AVCaptureStillImageOutput *StillImageOutput;
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [UIImage imageWithData:imageData];
             imageView.image = image;
+            
+            _retakeBut.hidden=NO;
+            _retakeBut.enabled=YES;
+            _submitBut.hidden=NO;
+            _submitBut.enabled=YES;
+            _snapBut.hidden=YES;
+            _snapBut.enabled=NO;
         }
     }];
-    
-    _retakeBut.hidden=NO;
-    _retakeBut.enabled=YES;
-    _submitBut.hidden=NO;
-    _submitBut.enabled=YES;
-    _snapBut.hidden=YES;
-    _snapBut.enabled=NO;
 }
 
 - (IBAction)retakephoto:(id)sender {

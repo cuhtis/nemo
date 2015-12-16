@@ -12,7 +12,7 @@
 
 static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
 static NSString* const kParkingSpots = @"parkingspots";
-static NSString* const kImages = @"photos";
+static NSString* const kFiles = @"files";
 
 @interface ParkingSpots ()
 @property (nonatomic, strong) NSMutableArray* objects;
@@ -41,7 +41,7 @@ static NSString* const kImages = @"photos";
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
-    NSURL* url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kImages] stringByAppendingPathComponent:parkingSpot.imageId]];
+    NSURL* url = [NSURL URLWithString:[[kBaseURL stringByAppendingPathComponent:kFiles] stringByAppendingPathComponent:parkingSpot.imageId]];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
@@ -102,7 +102,7 @@ static NSString* const kImages = @"photos";
 
 - (void) saveNewImageFirst:(ParkingSpot*)parkingSpot
 {
-    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kImages]];
+    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kFiles]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
     [request addValue:@"image/png" forHTTPHeaderField:@"Content-Type"];
@@ -123,16 +123,18 @@ static NSString* const kImages = @"photos";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"Adding Parking spot...");
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check
     }
     
     // if there is an image, save it first
     if (parkingSpot.image != nil && parkingSpot.imageId == nil) {
+        NSLog(@"Save Image first");
         [self saveNewImageFirst:parkingSpot];
         return;
     }
-    
+    NSLog(@"Save Parking Spot");
     
     NSString* parkingSpots = [kBaseURL stringByAppendingPathComponent:kParkingSpots];
     
@@ -154,6 +156,7 @@ static NSString* const kImages = @"photos";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSArray* responseArray = @[[NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]];
+            NSLog(@"Update objects list");
             [self parseAndAddParkingSpots:responseArray toArray:self.objects];
         }
     }];

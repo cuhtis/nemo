@@ -18,9 +18,10 @@
 @property (nonatomic, copy) NSNumber *latitude;     //ask robin
 @property (nonatomic, copy) NSNumber *zoom;         //ask robin
 @property (nonatomic, copy) NSNumber *is_taken;     //default NO
+@property (nonatomic, copy) NSDate *create_date;    //
 
-@property (nonatomic, strong) UIImage* image;//get put in
-@property (nonatomic, copy) NSString* imageId; //ignore
+@property (nonatomic, strong) UIImage* image;       //get put in
+@property (nonatomic, copy) NSString* imageId;      //ignore
 
 - (instancetype) initWithDictionary:(NSDictionary*)dictionary;
 - (NSDictionary*) toDictionary;

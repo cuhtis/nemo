@@ -21,8 +21,6 @@ CLLocationManager *locationManager;
 
 
 - (void) modelUpdated {
-    // DO NOTHING
-    NSLog(@"HI");
 }
 
 - (void)viewDidLoad {
@@ -106,6 +104,5 @@ CLLocationManager *locationManager;
     [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
     [self.parkingSpots addParkingSpot:parkingSpot];
     [self.parkingSpots persist:parkingSpot];
-    NSLog(@"DONE");
 }
 @end
