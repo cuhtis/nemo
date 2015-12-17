@@ -98,6 +98,7 @@ AVCaptureStillImageOutput *StillImageOutput;
         if(imageDataSampleBuffer!=NULL){
             NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image = [UIImage imageWithData:imageData];
+            [imageView setContentMode:UIViewContentModeScaleAspectFill];
             imageView.image = image;
             
             _retakeBut.hidden=NO;
@@ -125,7 +126,16 @@ AVCaptureStillImageOutput *StillImageOutput;
     imageView.image=nil;
 }
 
--(IBAction)unwindtoCamera:(UIStoryboardSegue *)segue{}
+-(IBAction)unwindtoCamera:(UIStoryboardSegue *)segue{
+    _retakeBut.hidden=NO;
+    _retakeBut.enabled=YES;
+    _submitBut.hidden=NO;
+    _submitBut.enabled=YES;
+    _snapBut.hidden=YES;
+    _snapBut.enabled=NO;
+    _backBut.enabled=NO;
+    _backBut.hidden=YES;
+}
 /*
 #pragma mark - Navigation
 

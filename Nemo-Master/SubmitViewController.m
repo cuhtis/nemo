@@ -112,6 +112,12 @@ CLLocationManager *locationManager;
     }
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+   
+    
+    
+}
 
 - (IBAction)SubmitForm:(id)sender {
     NSLog(@"SubmitForm");
@@ -123,6 +129,15 @@ CLLocationManager *locationManager;
     [parkingSpot setPrice:[f numberFromString:_PriceField.text]];
     [parkingSpot setLongitude:[f numberFromString:_LongField.text]];
     [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
+    [parkingSpot setCreate_date:[NSDate date].description];
+    
+    if (![AppDelegate appDelegate].globalSpot) {
+        [AppDelegate appDelegate].globalSpot = parkingSpot;
+    }
+    
     [self.parkingSpots persist:parkingSpot];
+    
+    
+    
 }
 @end

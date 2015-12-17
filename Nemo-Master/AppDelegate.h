@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "ParkingSpots.h"
 @import GoogleMaps;
-
+#import "ParkingSpot.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
 @property (strong, nonatomic) ParkingSpots *parkingSpots;
+@property (strong, nonatomic) ParkingSpot *globalSpot;
 
 + (AppDelegate *) appDelegate;
 

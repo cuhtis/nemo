@@ -216,7 +216,7 @@
 				TargetAttributes = {
 					C60F5FD61C1796E700D2645D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = Y2D734M289;
+						DevelopmentTeam = 9U23L6BV7T;
 					};
 				};
 			};
@@ -434,7 +434,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = Nemo;
 				PROVISIONING_PROFILE = "";
 			};
@@ -453,7 +453,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
 				PRODUCT_NAME = Nemo;
 				PROVISIONING_PROFILE = "";
 			};

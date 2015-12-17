@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -87,34 +87,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a1P-DK-DNJ">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="405" height="667"/>
                                 <subviews>
                                     <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pms-1a-2YJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="405" height="667"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="667" id="MX8-1H-HjD"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-zS-mVc">
-                                        <rect key="frame" x="162" y="600" width="50" height="50"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <accessibility key="accessibilityConfiguration" label=""/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="QoO-wW-Bxu"/>
-                                            <constraint firstAttribute="width" constant="50" id="c8u-Zy-xtU"/>
-                                        </constraints>
-                                        <state key="normal" backgroundImage="shit">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="20"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="takephoto:" destination="5ho-fn-TYn" eventType="touchUpInside" id="HA4-P0-u6h"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="diH-ck-sNV">
                                         <rect key="frame" x="18" y="618" width="25" height="26"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -136,7 +116,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVu-LU-M0g">
-                                        <rect key="frame" x="315" y="600" width="50" height="50"/>
+                                        <rect key="frame" x="316" y="600" width="50" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <accessibility key="accessibilityConfiguration" label=""/>
                                         <constraints>
@@ -166,17 +146,37 @@
                                             <segue destination="V32-fv-Syz" kind="unwind" unwindAction="unwindtoRoot:" id="bOR-Ze-TJ8"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cC0-zS-mVc">
+                                        <rect key="frame" x="150" y="570" width="80" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <accessibility key="accessibilityConfiguration" label=""/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="QoO-wW-Bxu"/>
+                                            <constraint firstAttribute="width" constant="80" id="c8u-Zy-xtU"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="shit">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="takephoto:" destination="5ho-fn-TYn" eventType="touchUpInside" id="HA4-P0-u6h"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Pms-1a-2YJ" secondAttribute="trailing" id="49k-Ei-5U5"/>
-                                    <constraint firstAttribute="trailing" secondItem="uVu-LU-M0g" secondAttribute="trailing" constant="10" id="5J1-bD-99B"/>
+                                    <constraint firstAttribute="trailing" secondItem="uVu-LU-M0g" secondAttribute="trailing" constant="39" id="5J1-bD-99B"/>
                                     <constraint firstItem="Pms-1a-2YJ" firstAttribute="top" secondItem="a1P-DK-DNJ" secondAttribute="top" id="6aM-DK-2Ao"/>
-                                    <constraint firstItem="Pms-1a-2YJ" firstAttribute="centerX" secondItem="cC0-zS-mVc" secondAttribute="centerX" id="CIC-z5-Z8w"/>
+                                    <constraint firstItem="Pms-1a-2YJ" firstAttribute="centerX" secondItem="cC0-zS-mVc" secondAttribute="centerX" constant="12.5" id="CIC-z5-Z8w"/>
                                     <constraint firstAttribute="bottom" secondItem="cC0-zS-mVc" secondAttribute="bottom" constant="17" id="Pew-j4-oXz"/>
                                     <constraint firstItem="Pms-1a-2YJ" firstAttribute="leading" secondItem="a1P-DK-DNJ" secondAttribute="leading" id="QoR-Ph-0eJ"/>
                                     <constraint firstAttribute="bottom" secondItem="Pms-1a-2YJ" secondAttribute="bottom" id="TaQ-9E-fMA"/>
-                                    <constraint firstItem="cC0-zS-mVc" firstAttribute="leading" secondItem="diH-ck-sNV" secondAttribute="trailing" constant="119" id="VZW-uP-QdK"/>
+                                    <constraint firstItem="cC0-zS-mVc" firstAttribute="leading" secondItem="diH-ck-sNV" secondAttribute="trailing" constant="107" id="VZW-uP-QdK"/>
                                     <constraint firstAttribute="bottom" secondItem="diH-ck-sNV" secondAttribute="bottom" constant="23" id="ZF4-sw-rrS"/>
                                     <constraint firstItem="WEB-aZ-deF" firstAttribute="leading" secondItem="a1P-DK-DNJ" secondAttribute="leading" constant="5" id="kzq-AN-VL3"/>
                                     <constraint firstItem="diH-ck-sNV" firstAttribute="leading" secondItem="a1P-DK-DNJ" secondAttribute="leading" constant="18" id="l32-H0-LDp"/>
@@ -270,7 +270,7 @@
                                         </state>
                                         <connections>
                                             <action selector="SubmitForm:" destination="1v6-UG-5Gg" eventType="touchUpInside" id="Iw0-kd-ns2"/>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="3nG-f0-jmK"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="GDh-lb-eb7"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RNe-PJ-e3P">

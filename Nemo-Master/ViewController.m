@@ -69,7 +69,15 @@
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
-    self.mapView.delegate = self;
+    CLLocationCoordinate2D first = CLLocationCoordinate2DMake(40.728255, -73.991460);
+    GMSMarker *gyukaku = [GMSMarker markerWithPosition: first];
+    gyukaku.title = @"Gyu-Kaku";
+    gyukaku.map = _mapView;
+    [NSThread sleepForTimeInterval:2];
+    
+    while ([[self.parkingSpots filteredParkingSpots] count] == 0) {
+        [NSThread sleepForTimeInterval:.5];
+    }
     [self updateMarkers];
 }
 
@@ -78,13 +86,33 @@
     self.mapView.delegate = self;
     [self.mapView clear];
     for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-        CLLocationCoordinate2D position =CLLocationCoordinate2DMake([[ps latitude] doubleValue],[[ps longitude] doubleValue]);
-        GMSMarker *marker = [GMSMarker markerWithPosition:position];
-        marker.userData = ps;
-        marker.icon = [UIImage imageNamed:@"Nemo"];
-        marker.title = ps.name;
-        marker.map = _mapView;
-        NSLog(@"Add marker: %@", ps.name);
+        if (true) {
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
+                                                         [[ps longitude] doubleValue]);
+            marker.userData = ps;
+            marker.icon = [UIImage imageNamed:@"Nemo"];
+            marker.title = ps.name;
+        
+            marker.map = self.mapView;
+            ps.marker = marker;
+            NSLog(@"Add marker: %@", ps.name);
+        }
+    }
+    if ([AppDelegate appDelegate].globalSpot) {
+        if (true) {
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake([[[AppDelegate appDelegate].globalSpot latitude] doubleValue],
+                                                         [[[AppDelegate appDelegate].globalSpot longitude] doubleValue]);
+            marker.userData = [AppDelegate appDelegate].globalSpot;
+            marker.icon = [UIImage imageNamed:@"Nemo"];
+            marker.title = [AppDelegate appDelegate].globalSpot.name;
+            
+            marker.map = self.mapView;
+            [AppDelegate appDelegate].globalSpot.marker = marker;
+            NSLog(@"Add marker: %@", [AppDelegate appDelegate].globalSpot.name);
+        }
+        NSLog(@"added new marker to map");
     }
 }
 
@@ -95,6 +123,8 @@
     
     infoWindow.address.text = parkingSpot.name;
     infoWindow.price.text = parkingSpot.price ? [NSString stringWithFormat:@"$%@", parkingSpot.price] : @"$0";
+    
+    [infoWindow.image setContentMode:UIViewContentModeScaleAspectFit];
     infoWindow.image.image = parkingSpot.image;
     
     NSLog(@"%@", parkingSpot.create_date);
@@ -207,12 +237,7 @@
 
 - (IBAction)refreshFish:(id)sender {
     NSLog(@"Refresh");
-    
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(40.729358, -73.998301);
-    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = @"Kopi Kopi";
-    marker.map = _mapView;
-
+    [self updateMarkers];
 }
 
 - (void)dealloc {
