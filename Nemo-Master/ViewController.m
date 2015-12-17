@@ -37,16 +37,12 @@
     firstLocationUpdate_ = NO;
     NSLog(@"viewWillDisappear");
     [locationManager stopUpdatingLocation];
-    
-    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(40.729358, -73.998301);
-    GMSMarker *marker = [GMSMarker markerWithPosition:position];
-    marker.title = @"Kopi Kopi";
-    marker.map = _mapView;
 }
 
 - (void)viewDidLoad {
     NSLog(@"viewDidLoad");
     [super viewDidLoad];
+    NSLog(@"global added");
     
     [self parkingSpots].delegate = self;
     
@@ -86,7 +82,6 @@
         marker.userData = ps;
         marker.icon = [UIImage imageNamed:@"Nemo"];
         marker.title = ps.name;
-        
         marker.map = _mapView;
         NSLog(@"Add marker: %@", ps.name);
     }
@@ -190,6 +185,11 @@
 
 - (IBAction)refreshFish:(id)sender {
     NSLog(@"Refresh");
+    
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(40.729358, -73.998301);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.title = @"Kopi Kopi";
+    marker.map = _mapView;
 
 }
 
