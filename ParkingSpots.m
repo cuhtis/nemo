@@ -16,7 +16,7 @@ static NSString* const kBaseURL = @"http://nemo-server.herokuapp.com/";
 static NSString* const kParkingSpots = @"parkingspots";
 static NSString* const kFiles = @"files";
 
-@interface ParkingSpots ()
+@interface ParkingSpots () <CLUploaderDelegate>
 @property (nonatomic, strong) NSMutableArray* objects;
 @property (nonatomic, strong) CLCloudinary *cloudinary;
 @property (nonatomic, strong) CLUploader* uploader;
@@ -37,16 +37,18 @@ static NSString* const kFiles = @"files";
 
 - (NSArray*) filteredParkingSpots
 {
+    NSLog(@"filteredParkingSpots");
     return [self objects];
 }
 
 - (void) addParkingSpot:(ParkingSpot*)parkingSpot
-{
+{   NSLog(@"addedParkingSpots");
     [self.objects addObject:parkingSpot];
 }
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
+    NSLog(@"loadImage");
     CLTransformation *transformation = [CLTransformation transformation];
     [transformation setWidthWithInt: 100];
     [transformation setHeightWithInt: 150];
@@ -78,6 +80,7 @@ static NSString* const kFiles = @"files";
 
 - (void)import
 {
+    NSLog(@"import");
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kParkingSpots]];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -98,7 +101,7 @@ static NSString* const kFiles = @"files";
 }
 
 - (void)parseAndAddParkingSpots:(NSArray*)parkingSpots toArray:(NSMutableArray*)destinationArray
-{
+{   NSLog(@"parseAndAddParkingSpots");
     for (NSDictionary* item in parkingSpots) {
         ParkingSpot* parkingSpot = [[ParkingSpot alloc] initWithDictionary:item];
         [destinationArray addObject:parkingSpot];
@@ -111,11 +114,14 @@ static NSString* const kFiles = @"files";
     if (self.delegate) {
         [self.delegate modelUpdated];
         NSLog(@"Model updated");
+    } else {
+        NSLog(@"No delegate found");
     }
 }
 
 - (void) saveNewImageFirst:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"saveNewImageFirst");
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kFiles]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
