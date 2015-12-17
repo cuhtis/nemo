@@ -46,7 +46,7 @@
 		7EDBAE521C20EEDF00B09C26 /* libCloudinary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudinary.a; sourceTree = "<group>"; };
 		B72E17892805A4FE3B8F1183 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6033AE51C220040005CFB77 /* Cloudinary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cloudinary; sourceTree = "<group>"; };
-		C60F5FD71C1796E700D2645D /* Nemo-Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Nemo-Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C60F5FD71C1796E700D2645D /* Nemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60F5FDB1C1796E700D2645D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C60F5FDD1C1796E700D2645D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C60F5FDE1C1796E700D2645D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		C60F5FD81C1796E700D2645D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C60F5FD71C1796E700D2645D /* Nemo-Master.app */,
+				C60F5FD71C1796E700D2645D /* Nemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			);
 			name = "Nemo-Master";
 			productName = "Nemo-Master";
-			productReference = C60F5FD71C1796E700D2645D /* Nemo-Master.app */;
+			productReference = C60F5FD71C1796E700D2645D /* Nemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -216,7 +216,7 @@
 				TargetAttributes = {
 					C60F5FD61C1796E700D2645D = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 9U23L6BV7T;
+						DevelopmentTeam = Y2D734M289;
 					};
 				};
 			};
@@ -434,8 +434,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_NAME = Nemo;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -453,8 +453,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "nyu.edu.Nemo-Master";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = nyu.edu.Nemo;
+				PRODUCT_NAME = Nemo;
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

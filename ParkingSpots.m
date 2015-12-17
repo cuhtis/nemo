@@ -26,6 +26,7 @@ static NSString* const kFiles = @"files";
 
 - (id)init
 {
+    NSLog(@"ParkingSpots: init");
     self = [super init];
     if (self) {
         _objects = [NSMutableArray array];
@@ -50,9 +51,10 @@ static NSString* const kFiles = @"files";
 {
     NSLog(@"loadImage");
     CLTransformation *transformation = [CLTransformation transformation];
-    [transformation setWidthWithInt: 100];
-    [transformation setHeightWithInt: 150];
-    [transformation setCrop: @"fill"];
+    [transformation setParams: @{@"width": @200,
+                                 @"height": @179,
+                                 @"angle": @90,
+                                 @"crop": @"thumb"}];
     NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot.imageId] options:@{@"transformation": transformation}]];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
@@ -67,10 +69,10 @@ static NSString* const kFiles = @"files";
             }
             parkingSpot.image = image;
             if (self.delegate) {
-                NSLog(@"Update delegate");
+                NSLog(@"Built image, update delegate");
                 [self.delegate modelUpdated];
             } else {
-                NSLog(@"No delegate found");
+                NSLog(@"Built image, no delegate found");
             }
         }
     }];
@@ -112,6 +114,7 @@ static NSString* const kFiles = @"files";
     }
     
     if (self.delegate) {
+        NSLog(@"Parsed, update model");
         [self.delegate modelUpdated];
         NSLog(@"Model updated");
     } else {
@@ -143,6 +146,7 @@ static NSString* const kFiles = @"files";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"ParkingSpots: persist (%@)", parkingSpot.name);
     
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check
