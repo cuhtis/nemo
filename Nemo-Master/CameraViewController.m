@@ -106,6 +106,9 @@ AVCaptureStillImageOutput *StillImageOutput;
             _submitBut.enabled=YES;
             _snapBut.hidden=YES;
             _snapBut.enabled=NO;
+            _backBut.enabled=NO;
+            _backBut.hidden=YES;
+            
         }
     }];
 }
@@ -117,6 +120,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     _retakeBut.enabled=NO;
     _submitBut.hidden=YES;
     _submitBut.enabled=NO;
+    _backBut.enabled=YES;
+    _backBut.hidden=NO;
     imageView.image=nil;
 }
 

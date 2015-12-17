@@ -15,6 +15,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *retakeBut;
 @property (strong, nonatomic) IBOutlet UIButton *snapBut;
 @property (strong, nonatomic) IBOutlet UIButton *submitBut;
+@property (strong, nonatomic) IBOutlet UIButton *backBut;
 
 - (IBAction)takephoto:(id)sender;
 - (IBAction)retakephoto:(id)sender;

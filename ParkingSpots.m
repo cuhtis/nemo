@@ -118,6 +118,9 @@ static NSString* const kFiles = @"files";
     if (self.delegate) {
         NSLog(@"Parsed, update model");
         [self.delegate modelUpdated];
+        NSLog(@"Model updated");
+    } else {
+        NSLog(@"No delegate found");
     }
 }
 

@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C60F5FD61C1796E700D2645D"
-               BuildableName = "Nemo-Master.app"
+               BuildableName = "Nemo.app"
                BlueprintName = "Nemo-Master"
                ReferencedContainer = "container:Nemo-Master.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C60F5FD61C1796E700D2645D"
-            BuildableName = "Nemo-Master.app"
+            BuildableName = "Nemo.app"
             BlueprintName = "Nemo-Master"
             ReferencedContainer = "container:Nemo-Master.xcodeproj">
          </BuildableReference>
@@ -56,7 +56,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C60F5FD61C1796E700D2645D"
-            BuildableName = "Nemo-Master.app"
+            BuildableName = "Nemo.app"
             BlueprintName = "Nemo-Master"
             ReferencedContainer = "container:Nemo-Master.xcodeproj">
          </BuildableReference>
@@ -75,7 +75,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C60F5FD61C1796E700D2645D"
-            BuildableName = "Nemo-Master.app"
+            BuildableName = "Nemo.app"
             BlueprintName = "Nemo-Master"
             ReferencedContainer = "container:Nemo-Master.xcodeproj">
          </BuildableReference>
