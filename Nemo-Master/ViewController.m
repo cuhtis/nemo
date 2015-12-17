@@ -30,12 +30,18 @@
     NSLog(@"viewWillAppear");
     if (!firstLocationUpdate_)
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     firstLocationUpdate_ = NO;
     NSLog(@"viewWillDisappear");
     [locationManager stopUpdatingLocation];
+    
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(40.729358, -73.998301);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.title = @"Kopi Kopi";
+    marker.map = _mapView;
 }
 
 - (void)viewDidLoad {
@@ -67,7 +73,6 @@
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
-    self.mapView.delegate = self;
     [self addMarkers];
 }
 
@@ -76,14 +81,13 @@
     self.mapView.delegate = self;
     [self.mapView clear];
     for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
-                                                     [[ps longitude] doubleValue]);
+        CLLocationCoordinate2D position =CLLocationCoordinate2DMake([[ps latitude] doubleValue],[[ps longitude] doubleValue]);
+        GMSMarker *marker = [GMSMarker markerWithPosition:position];
         marker.userData = ps;
         marker.icon = [UIImage imageNamed:@"Nemo"];
         marker.title = ps.name;
         
-        marker.map = self.mapView;
+        marker.map = _mapView;
         NSLog(@"Add marker: %@", ps.name);
     }
 }
@@ -164,7 +168,7 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    NSLog(@"gets called");
+    //NSLog(@"gets called");
     if (!firstLocationUpdate_) {
         
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
@@ -186,7 +190,7 @@
 
 - (IBAction)refreshFish:(id)sender {
     NSLog(@"Refresh");
-    [self addMarkers];
+
 }
 
 - (void)dealloc {
@@ -208,6 +212,7 @@
 -(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue {
     NSLog(@"unwindToRoot");
     //[self addMarkers];
+
 }
 
 @end
