@@ -27,8 +27,8 @@
     return [AppDelegate appDelegate].parkingSpots;
 }
 - (void)viewWillAppear:(BOOL)animated {
-    firstLocationUpdate_ = NO;
     NSLog(@"viewWillAppear");
+    if (!firstLocationUpdate_)
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
 }
 
@@ -117,6 +117,11 @@
     else if ([components second] - seconds > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld seconds ago", [components second] - seconds];
     else infoWindow.time.text = @"Just added";
     
+    NSLog(@"%ld, %d", [components day], days);
+    NSLog(@"%ld, %d", [components hour], hours);
+    NSLog(@"%ld, %d", [components minute], minutes);
+    NSLog(@"%ld, %d", [components second], seconds);
+    
     NSLog(@"Marker info: %@", parkingSpot.name);
     return infoWindow;
 }
@@ -159,12 +164,10 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    //NSLog(@"gets called");
+    NSLog(@"gets called");
     if (!firstLocationUpdate_) {
         
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        
-        
         CLLocationCoordinate2D target =
         CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude);
         
@@ -175,8 +178,9 @@
         [_mapView animateToCameraPosition:firstPosition];
         [_mapView animateToLocation:target];
         [_mapView animateToZoom:17];
-        
         firstLocationUpdate_ = YES;
+
+        
     }
 }
 
@@ -187,7 +191,12 @@
 
 - (void)dealloc {
     NSLog(@"Dealloc ViewController");
-    if(!firstLocationUpdate_) [_mapView removeObserver:self forKeyPath:@"myLocation"];
+        @try {
+        [_mapView removeObserver:self forKeyPath:@"myLocation"];
+        }@catch (id noObserverException) {
+            
+        NSLog(@"dwadad");
+    }
 }
 
 

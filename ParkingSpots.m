@@ -38,18 +38,19 @@ static NSString* const kFiles = @"files";
 
 - (NSArray*) filteredParkingSpots
 {
-    NSLog(@"filteredParkingSpots");
+    NSLog(@"ParkingSpots: filteredParkingSpots");
     return [self objects];
 }
 
 - (void) addParkingSpot:(ParkingSpot*)parkingSpot
-{   NSLog(@"addedParkingSpots");
+{
+    NSLog(@"ParkingSpots: addParkingSpot");
     [self.objects addObject:parkingSpot];
 }
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
-    NSLog(@"loadImage");
+    NSLog(@"ParkingSpots: loadImage (%@)", parkingSpot.name);
     CLTransformation *transformation = [CLTransformation transformation];
     [transformation setParams: @{@"width": @200,
                                  @"height": @179,
@@ -82,7 +83,7 @@ static NSString* const kFiles = @"files";
 
 - (void)import
 {
-    NSLog(@"import");
+    NSLog(@"ParkingSpots: Import");
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kParkingSpots]];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -103,7 +104,8 @@ static NSString* const kFiles = @"files";
 }
 
 - (void)parseAndAddParkingSpots:(NSArray*)parkingSpots toArray:(NSMutableArray*)destinationArray
-{   NSLog(@"parseAndAddParkingSpots");
+{
+    NSLog(@"ParkingSpots: parseAndAddParkingSpots");
     for (NSDictionary* item in parkingSpots) {
         ParkingSpot* parkingSpot = [[ParkingSpot alloc] initWithDictionary:item];
         [destinationArray addObject:parkingSpot];
@@ -124,7 +126,7 @@ static NSString* const kFiles = @"files";
 
 - (void) saveNewImageFirst:(ParkingSpot*)parkingSpot
 {
-    NSLog(@"saveNewImageFirst");
+    NSLog(@"ParkingSpots: saveNewImageFirst (%@)", parkingSpot.name);
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kFiles]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";

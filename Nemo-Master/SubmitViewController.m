@@ -24,6 +24,10 @@ CLLocationManager *locationManager;
 - (void) modelUpdated {
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [locationManager stopUpdatingLocation];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -110,6 +114,7 @@ CLLocationManager *locationManager;
 
 
 - (IBAction)SubmitForm:(id)sender {
+    NSLog(@"SubmitForm");
     ParkingSpot *parkingSpot = [[ParkingSpot alloc] init];
     [parkingSpot setImage:_snappedImage];
     NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
