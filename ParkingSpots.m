@@ -48,6 +48,12 @@ static NSString* const kFiles = @"files";
     [self.objects addObject:parkingSpot];
 }
 
+- (void) removeParkingSpot:(ParkingSpot*)parkingSpot
+{
+    NSLog(@"ParkingSpots: deleteParkingSpot");
+    [self.objects removeObject:parkingSpot];
+}
+
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
     NSLog(@"ParkingSpots: loadImage (%@)", parkingSpot.name);
@@ -172,6 +178,8 @@ static NSString* const kFiles = @"files";
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = exists ? @"PUT" : @"POST";
+    
+    parkingSpot.create_date = [NSDate date].description;
     
     NSData* data = [NSJSONSerialization dataWithJSONObject:[parkingSpot toDictionary] options:0 error:NULL];
     request.HTTPBody = data;

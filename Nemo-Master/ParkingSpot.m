@@ -27,7 +27,7 @@
         _zoom = dictionary[@"zoom"];
         __id = dictionary[@"_id"];
         _imageId = dictionary[@"imageId"];
-        _created_at = dictionary[@"created_at"];
+        _create_date = dictionary[@"create_date"];
     }
     return self;
 }
@@ -42,6 +42,7 @@
     safeSet(jsonable, @"zoom", self.zoom);
     safeSet(jsonable, @"_id", self._id);
     safeSet(jsonable, @"imageId", self.imageId);
+    safeSet(jsonable, @"create_date", self.create_date);
     return jsonable;
 }
 
