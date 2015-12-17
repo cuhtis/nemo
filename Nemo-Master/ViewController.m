@@ -69,10 +69,11 @@
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
-    [self addMarkers];
+    self.mapView.delegate = self;
+    [self updateMarkers];
 }
 
-- (void) addMarkers {
+- (void) updateMarkers {
     NSLog(@"AddMarkers");
     self.mapView.delegate = self;
     [self.mapView clear];
@@ -96,33 +97,55 @@
     infoWindow.price.text = parkingSpot.price ? [NSString stringWithFormat:@"$%@", parkingSpot.price] : @"$0";
     infoWindow.image.image = parkingSpot.image;
     
-    NSLog(@"%@", parkingSpot.created_at.description);
+    NSLog(@"%@", parkingSpot.create_date);
+    NSLog(@"%@", [NSDate date].description);
     
-    NSString *createdDate = parkingSpot.created_at.description;
-    int days = [[createdDate substringWithRange: NSMakeRange(8, 2)] intValue];
-    int hours = [[createdDate substringWithRange: NSMakeRange(11, 2)] intValue];
-    int minutes = [[createdDate substringWithRange: NSMakeRange(14, 2)] intValue];
-    int seconds = [[createdDate substringWithRange: NSMakeRange(17, 2)] intValue];
+    NSString *created = parkingSpot.create_date;
+    NSString *now = [NSDate date].description;
+    int days = [[now substringWithRange: NSMakeRange(8, 2)] intValue] - [[created substringWithRange: NSMakeRange(8, 2)] intValue];
+    int hours = [[now substringWithRange: NSMakeRange(11, 2)] intValue] - [[created substringWithRange: NSMakeRange(11, 2)] intValue];
+    int minutes = [[now substringWithRange: NSMakeRange(14, 2)] intValue] - [[created substringWithRange: NSMakeRange(14, 2)] intValue];
+    int seconds = [[now substringWithRange: NSMakeRange(17, 2)] intValue] - [[created substringWithRange: NSMakeRange(17, 2)] intValue];
     
-    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
-    NSCalendarUnit unitFlags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents *components = [sysCalendar components:unitFlags
-                                                  fromDate:[NSDate date]];
-    
-    if ([components day] - days > 3) infoWindow.time.text = @"Several days ago";
-    else if ([components day] - days > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld days ago", [components day] - days];
-    else if ([components hour] - hours > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld hours ago", [components hour] - hours];
-    else if ([components minute] - minutes > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld minutes ago", [components minute] - minutes];
-    else if ([components second] - seconds > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld seconds ago", [components second] - seconds];
+    if (days > 3) infoWindow.time.text = @"Several days ago";
+    else if (days > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d days ago", days];
+    else if (hours > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d hours ago", hours];
+    else if (minutes > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d minutes ago", minutes];
+    else if (seconds > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d seconds ago", seconds];
     else infoWindow.time.text = @"Just added";
     
-    NSLog(@"%ld, %d", [components day], days);
-    NSLog(@"%ld, %d", [components hour], hours);
-    NSLog(@"%ld, %d", [components minute], minutes);
-    NSLog(@"%ld, %d", [components second], seconds);
+    NSLog(@"D:%d, H:%d, M:%d, S:%d", days, hours, minutes, seconds);
     
     NSLog(@"Marker info: %@", parkingSpot.name);
     return infoWindow;
+}
+
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Claim this spot?"
+                                                                   message:@"Claiming this parking spot will make it unavailable for others to see."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* claimAction = [UIAlertAction actionWithTitle:@"Claim!" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+    {
+        marker.map = nil;
+        [self.parkingSpots removeParkingSpot:marker.userData];
+    }];
+    [alert addAction:claimAction];
+    
+    UIAlertAction* goneAction = [UIAlertAction actionWithTitle:@"It's Gone!" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action)
+    {
+        marker.map = nil;
+        [self.parkingSpots removeParkingSpot:marker.userData];
+    }];
+    [alert addAction:goneAction];
+    
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {}];
+    [alert addAction:cancelAction];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (void)modelUpdated {
@@ -131,7 +154,7 @@
     dispatch_async(dispatch_get_main_queue(),
     ^{
         NSLog(@"AsyncDispatch START");
-        [self addMarkers];
+        [self updateMarkers];
         NSLog(@"AsyncDispatch END");
     });
 }
@@ -163,7 +186,6 @@
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-    //NSLog(@"gets called");
     if (!firstLocationUpdate_) {
         
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];

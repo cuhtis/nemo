@@ -22,6 +22,7 @@
 
 - (NSArray*) filteredParkingSpots;
 - (void) addParkingSpot:(ParkingSpot*)parkingSpot;
+- (void) removeParkingSpot:(ParkingSpot*)parkingSpot;
 
 - (void) import;
 - (void) persist:(ParkingSpot*)parkingSpot;
