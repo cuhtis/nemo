@@ -30,12 +30,18 @@
     NSLog(@"viewWillAppear");
     if (!firstLocationUpdate_)
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     firstLocationUpdate_ = NO;
     NSLog(@"viewWillDisappear");
     [locationManager stopUpdatingLocation];
+    
+    CLLocationCoordinate2D position = CLLocationCoordinate2DMake(40.729358, -73.998301);
+    GMSMarker *marker = [GMSMarker markerWithPosition:position];
+    marker.title = @"Kopi Kopi";
+    marker.map = _mapView;
 }
 
 - (void)viewDidLoad {
@@ -234,6 +240,7 @@
 -(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue {
     NSLog(@"unwindToRoot");
     //[self addMarkers];
+
 }
 
 @end
