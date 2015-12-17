@@ -27,6 +27,7 @@
         _zoom = dictionary[@"zoom"];
         __id = dictionary[@"_id"];
         _imageId = dictionary[@"imageId"];
+        _created_at = dictionary[@"created_at"];
     }
     return self;
 }

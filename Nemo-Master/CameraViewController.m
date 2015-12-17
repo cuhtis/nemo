@@ -72,6 +72,10 @@ AVCaptureStillImageOutput *StillImageOutput;
     }
 }
 
+- (void)dealloc {
+    NSLog(@"Dealloc CameraViewController");
+}
+
 -(void)hideStatusBar {
     [self setNeedsStatusBarAppearanceUpdate];
 }

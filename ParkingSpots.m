@@ -26,6 +26,7 @@ static NSString* const kFiles = @"files";
 
 - (id)init
 {
+    NSLog(@"ParkingSpots: init");
     self = [super init];
     if (self) {
         _objects = [NSMutableArray array];
@@ -37,19 +38,22 @@ static NSString* const kFiles = @"files";
 
 - (NSArray*) filteredParkingSpots
 {
+    NSLog(@"ParkingSpots: filteredParkingSpots");
     return [self objects];
 }
 
 - (void) addParkingSpot:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"ParkingSpots: addParkingSpot");
     [self.objects addObject:parkingSpot];
 }
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
+    NSLog(@"ParkingSpots: loadImage (%@)", parkingSpot.name);
     CLTransformation *transformation = [CLTransformation transformation];
     [transformation setParams: @{@"width": @200,
-                                 @"height": @234,
+                                 @"height": @179,
                                  @"angle": @90,
                                  @"crop": @"thumb"}];
     NSURL *url = [NSURL URLWithString:[self.cloudinary url:[NSString stringWithFormat:@"%@.png", parkingSpot.imageId] options:@{@"transformation": transformation}]];
@@ -66,10 +70,10 @@ static NSString* const kFiles = @"files";
             }
             parkingSpot.image = image;
             if (self.delegate) {
-                NSLog(@"Update delegate");
+                NSLog(@"Built image, update delegate");
                 [self.delegate modelUpdated];
             } else {
-                NSLog(@"No delegate found");
+                NSLog(@"Built image, no delegate found");
             }
         }
     }];
@@ -79,6 +83,7 @@ static NSString* const kFiles = @"files";
 
 - (void)import
 {
+    NSLog(@"ParkingSpots: Import");
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kParkingSpots]];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
@@ -100,6 +105,7 @@ static NSString* const kFiles = @"files";
 
 - (void)parseAndAddParkingSpots:(NSArray*)parkingSpots toArray:(NSMutableArray*)destinationArray
 {
+    NSLog(@"ParkingSpots: parseAndAddParkingSpots");
     for (NSDictionary* item in parkingSpots) {
         ParkingSpot* parkingSpot = [[ParkingSpot alloc] initWithDictionary:item];
         [destinationArray addObject:parkingSpot];
@@ -110,13 +116,14 @@ static NSString* const kFiles = @"files";
     }
     
     if (self.delegate) {
+        NSLog(@"Parsed, update model");
         [self.delegate modelUpdated];
-        NSLog(@"Model updated");
     }
 }
 
 - (void) saveNewImageFirst:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"ParkingSpots: saveNewImageFirst (%@)", parkingSpot.name);
     NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kFiles]];
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
@@ -138,6 +145,7 @@ static NSString* const kFiles = @"files";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
+    NSLog(@"ParkingSpots: persist (%@)", parkingSpot.name);
     
     if (!parkingSpot || parkingSpot.name == nil || parkingSpot.name.length == 0) {
         return; //input safety check

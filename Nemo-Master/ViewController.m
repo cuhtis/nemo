@@ -28,15 +28,18 @@
 }
 - (void)viewWillAppear:(BOOL)animated {
     firstLocationUpdate_ = NO;
+    NSLog(@"viewWillAppear");
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     firstLocationUpdate_ = NO;
+    NSLog(@"viewWillDisappear");
+    [locationManager stopUpdatingLocation];
 }
 
 - (void)viewDidLoad {
+    NSLog(@"viewDidLoad");
     [super viewDidLoad];
     
     [self parkingSpots].delegate = self;
@@ -60,17 +63,32 @@
     NSLog(@"created locationManager");
     
     // Google Map View
-    
     _mapView.settings.compassButton = YES;
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
     /* Setting Up Markers */
     self.mapView.delegate = self;
-    [self modelUpdated];
+    [self addMarkers];
+}
+
+- (void) addMarkers {
+    NSLog(@"AddMarkers");
+    self.mapView.delegate = self;
+    [self.mapView clear];
+    for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
+        GMSMarker *marker = [[GMSMarker alloc] init];
+        marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
+                                                     [[ps longitude] doubleValue]);
+        marker.userData = ps;
+        marker.icon = [UIImage imageNamed:@"Nemo"];
+        marker.title = ps.name;
+        
+        marker.map = self.mapView;
+        NSLog(@"Add marker: %@", ps.name);
+    }
 }
 
 - (UIView *) mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
-    NSLog(@"Marker info");
     CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
     
     ParkingSpot *parkingSpot = marker.userData;
@@ -79,6 +97,27 @@
     infoWindow.price.text = parkingSpot.price ? [NSString stringWithFormat:@"$%@", parkingSpot.price] : @"$0";
     infoWindow.image.image = parkingSpot.image;
     
+    NSLog(@"%@", parkingSpot.created_at.description);
+    
+    NSString *createdDate = parkingSpot.created_at.description;
+    int days = [[createdDate substringWithRange: NSMakeRange(8, 2)] intValue];
+    int hours = [[createdDate substringWithRange: NSMakeRange(11, 2)] intValue];
+    int minutes = [[createdDate substringWithRange: NSMakeRange(14, 2)] intValue];
+    int seconds = [[createdDate substringWithRange: NSMakeRange(17, 2)] intValue];
+    
+    NSCalendar *sysCalendar = [NSCalendar currentCalendar];
+    NSCalendarUnit unitFlags = NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
+    NSDateComponents *components = [sysCalendar components:unitFlags
+                                                  fromDate:[NSDate date]];
+    
+    if ([components day] - days > 3) infoWindow.time.text = @"Several days ago";
+    else if ([components day] - days > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld days ago", [components day] - days];
+    else if ([components hour] - hours > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld hours ago", [components hour] - hours];
+    else if ([components minute] - minutes > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld minutes ago", [components minute] - minutes];
+    else if ([components second] - seconds > 0) infoWindow.time.text = [NSString stringWithFormat:@"%ld seconds ago", [components second] - seconds];
+    else infoWindow.time.text = @"Just added";
+    
+    NSLog(@"Marker info: %@", parkingSpot.name);
     return infoWindow;
 }
 
@@ -87,21 +126,9 @@
     NSLog(@"modelUpdated");
     dispatch_async(dispatch_get_main_queue(),
     ^{
-        NSLog(@"AsyncDispatch");
-        self.mapView.delegate = self;
-        [self.mapView clear];
-        for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-            GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
-                                                         [[ps longitude] doubleValue]);
-            marker.userData = ps;
-            marker.icon = [UIImage imageNamed:@"Nemo"];
-            marker.title = ps.name;
-            
-            marker.map = self.mapView;
-            NSLog(@"Add marker");
-        }
-        NSLog(@"Done importing");
+        NSLog(@"AsyncDispatch START");
+        [self addMarkers];
+        NSLog(@"AsyncDispatch END");
     });
 }
 
@@ -153,12 +180,14 @@
     }
 }
 
-- (IBAction)refresh:(id)sender {
-    [self modelUpdated];
+- (IBAction)refreshFish:(id)sender {
+    NSLog(@"Refresh");
+    [self addMarkers];
 }
 
 - (void)dealloc {
-    [_mapView removeObserver:self forKeyPath:@"myLocation"];
+    NSLog(@"Dealloc ViewController");
+    if(!firstLocationUpdate_) [_mapView removeObserver:self forKeyPath:@"myLocation"];
 }
 
 
@@ -167,6 +196,9 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue{}
+-(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue {
+    NSLog(@"unwindToRoot");
+    //[self addMarkers];
+}
 
 @end

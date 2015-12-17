@@ -16,6 +16,7 @@
 @end
 
 @implementation SubmitViewController
+BOOL firstLocationUpdate_;
 CLLocationManager *locationManager;
 @synthesize scrollView;
 
@@ -35,6 +36,8 @@ CLLocationManager *locationManager;
     [locationManager setDesiredAccuracy: kCLLocationAccuracyBest];
     [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];
+    
+    firstLocationUpdate_ = YES;
     
     /* Submit Parking Entry */
     _SnapShot.image = _snappedImage;
@@ -62,6 +65,10 @@ CLLocationManager *locationManager;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc {
+    NSLog(@"Dealloc SubmitViewController");
+}
+
 - (ParkingSpots *)parkingSpots {
     return [AppDelegate appDelegate].parkingSpots;
 }
@@ -86,9 +93,18 @@ CLLocationManager *locationManager;
 
 - (void)locationManager: (CLLocationManager *) manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
     CLLocation *currentLocation = [locations lastObject];
-    if (currentLocation != nil) {
+    if (currentLocation != nil && firstLocationUpdate_) {
         _LatField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
         _LongField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
+        
+        [[GMSGeocoder geocoder] reverseGeocodeCoordinate:currentLocation.coordinate
+                                       completionHandler:
+         ^(GMSReverseGeocodeResponse *response, NSError *error){
+             _NameField.text = response.firstResult.thoroughfare;
+         }];
+        _PriceField.text = @"0";
+        firstLocationUpdate_ = NO;
+
     }
 }
 
@@ -102,7 +118,6 @@ CLLocationManager *locationManager;
     [parkingSpot setPrice:[f numberFromString:_PriceField.text]];
     [parkingSpot setLongitude:[f numberFromString:_LongField.text]];
     [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
-    [self.parkingSpots addParkingSpot:parkingSpot];
     [self.parkingSpots persist:parkingSpot];
 }
 @end
