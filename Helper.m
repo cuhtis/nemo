@@ -10,7 +10,7 @@
 
 @implementation Helper
 
-// Create a custom button with images
+// Helper function to add images to buttons in UIToolbar
 + (void)customizeBarButton:(UIBarButtonItem *)barButtonItem image:(UIImage *)image highlightedImage:(UIImage *)highlightedImage {
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
