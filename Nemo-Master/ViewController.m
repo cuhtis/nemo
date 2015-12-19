@@ -27,7 +27,10 @@
     return [AppDelegate appDelegate].parkingSpots;
 }
 - (void)viewWillAppear:(BOOL)animated {
+#ifdef DEBUG
     NSLog(@"viewWillAppear");
+#endif
+    // add observer for Google Maps myLocation object (to see location changes)
     if (!firstLocationUpdate_)
     [_mapView addObserver:self forKeyPath:@"myLocation" options:0 context:nil];
     
@@ -35,25 +38,30 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     firstLocationUpdate_ = NO;
+#ifdef DEBUG
     NSLog(@"viewWillDisappear");
+#endif
     [locationManager stopUpdatingLocation];
 }
 
 - (void)viewDidLoad {
+#ifdef DEBUG
     NSLog(@"viewDidLoad");
+#endif
     [super viewDidLoad];
+#ifdef DEBUG
     NSLog(@"global added");
-    
+#endif
     [self parkingSpots].delegate = self;
     
+    /* Setting up Toolbar*/
     UIImage *nemo = [UIImage imageNamed:@"Nemo"];
     UIImage *camera = [UIImage imageNamed:@"Camera"];
     [Helper customizeBarButton:self.fishButton image:nemo highlightedImage:nemo];
     [Helper customizeBarButton:self.cameraButton image:camera highlightedImage:camera];
     self.mainToolBar.clipsToBounds = YES;
     
-    // Getting My Location
-    //Instantiate a location object.
+    /* Getting My Location */
     locationManager = [[CLLocationManager alloc] init];
     [locationManager setDelegate:self];
     
@@ -64,20 +72,18 @@
     [locationManager startUpdatingLocation];
     NSLog(@"created locationManager");
     
-    // Google Map View
+    /* Google Map View */
     _mapView.settings.compassButton = YES;
     _mapView.padding = UIEdgeInsetsMake(self.topLayoutGuide.length + 10, 0, self.bottomLayoutGuide.length, 0);
     
-    /* Setting Up Markers */
-    CLLocationCoordinate2D first = CLLocationCoordinate2DMake(40.728255, -73.991460);
-    GMSMarker *gyukaku = [GMSMarker markerWithPosition: first];
-    gyukaku.title = @"Gyu-Kaku";
-    gyukaku.map = _mapView;
+    // Setting Up Markers
     [NSThread sleepForTimeInterval:2];
-    
+    // wait for server to download
     while ([[self.parkingSpots filteredParkingSpots] count] == 0) {
         [NSThread sleepForTimeInterval:.5];
     }
+    
+    // update map with new markers
     [self updateMarkers];
 }
 
@@ -191,6 +197,7 @@
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
+    // if user authorizes location services, enable myLocation
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         NSLog(@"successfully authorized");
         _mapView.myLocationEnabled = YES;
@@ -198,9 +205,12 @@
 }
 
 - (void)locationManager: (CLLocationManager *) manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
+#ifdef DEBUG
     NSLog(@"didUpdateToLocation: %@", locations);
+#endif
     CLLocation *currentLocation = [locations lastObject];
-    
+
+    // only zoom map to current location first time app opens
     if (currentLocation != nil && !firstLocationUpdate_) {
         CLLocationCoordinate2D target =
         CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
@@ -210,12 +220,14 @@
     }
 }
 
-#pragma mark - KVO updates
+#pragma mark - Key Value Observer updates
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
+    
+    // only track location the first time app opens
     if (!firstLocationUpdate_) {
         
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
@@ -236,17 +248,22 @@
 }
 
 - (IBAction)refreshFish:(id)sender {
+#ifdef DEBUG
     NSLog(@"Refresh");
+#endif
     [self updateMarkers];
 }
 
+// called when view is removed from stack
 - (void)dealloc {
+#ifdef DEBUG
     NSLog(@"Dealloc ViewController");
+#endif
+    // try to dealloc the observer
         @try {
         [_mapView removeObserver:self forKeyPath:@"myLocation"];
         }@catch (id noObserverException) {
             
-        NSLog(@"dwadad");
     }
 }
 

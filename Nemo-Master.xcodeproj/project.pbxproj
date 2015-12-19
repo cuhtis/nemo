@@ -57,6 +57,7 @@
 		C60F5FEB1C1796E700D2645D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C60F5FFE1C17E52800D2645D /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Helper.h; path = ../Helper.h; sourceTree = "<group>"; };
 		C60F5FFF1C17E52800D2645D /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Helper.m; path = ../Helper.m; sourceTree = "<group>"; };
+		C67D58531C24BF5F004E045C /* GlobalHead.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlobalHead.h; sourceTree = "<group>"; };
 		C6A569A91C224455007B33A5 /* Cloudinary */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cloudinary; sourceTree = "<group>"; };
 		C6DA6C281C1A38CD005FBD89 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C6F8D3E21C1E151400C36DA5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -156,6 +157,7 @@
 				C60F5FDE1C1796E700D2645D /* AppDelegate.m */,
 				C60F5FE01C1796E700D2645D /* ViewController.h */,
 				C60F5FE11C1796E700D2645D /* ViewController.m */,
+				C67D58531C24BF5F004E045C /* GlobalHead.h */,
 				7E5463DB1C21C7A3009CD1CC /* InfoWindow.xib */,
 				7E5463DD1C21C964009CD1CC /* CustomInfoWindow.h */,
 				7E5463DE1C21C964009CD1CC /* CustomInfoWindow.m */,
