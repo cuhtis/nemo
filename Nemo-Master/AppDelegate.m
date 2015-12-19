@@ -21,10 +21,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Initialize a parking spots (connector with database) and import the information to local array
     self.parkingSpots = [[ParkingSpots alloc] init];
     [self.parkingSpots import];
     
+    // Connect to Google Map Services
     [GMSServices provideAPIKey:@"AIzaSyBPICuBTfKlgqibI9d6leZvbXEnjrqfjaw"];
+    
     return YES;
 }
 

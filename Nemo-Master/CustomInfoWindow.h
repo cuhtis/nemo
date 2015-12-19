@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+/* A class representing the custom info window for GMS markers */
 @interface CustomInfoWindow : UIView
 
 @property (strong, nonatomic) IBOutlet UILabel *address;

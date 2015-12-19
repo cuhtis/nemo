@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) ParkingSpots *parkingSpots;
+@property (strong, nonatomic) ParkingSpots *parkingSpots;   // Class that imports from/persists to database
 @property (strong, nonatomic) ParkingSpot *globalSpot;
 
 + (AppDelegate *) appDelegate;
