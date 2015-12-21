@@ -8,6 +8,13 @@ Created by Robin Huang, Jonathan Chen and Curtis Li
 
 It is very difficult to find parking in certain cities, at certain times. When everyone is trying to find parking around Venice Beach, information is the key advantage. Nemo aims to provide information about open parking spots through crowdsourcing. Anyone can take a picture of an empty parking spot they see when they walk by it, and post it. Someone looking for a parking spot can open the app and view this information.
 
+## Configuration Instructions
+
+1. Clone the project repo
+2. In terminal, and run '$ pod install'
+3. Download the Cloudinary repo, and add it to the project workspace
+4. Open the project from the file 'Nemo-Master/Nemo-Master.xcoworkspace'
+
 ## How It Works
 
 1. To find a parking spot, the user needs to open the app, which brings him to the Google Maps view. The nemo icons on the map represent free parking spots that are pulled from our server. They display data such as Name/Address, Time Past since posting, and price.
