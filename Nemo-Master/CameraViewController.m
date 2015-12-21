@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Junhan Huang. All rights reserved.
 //
 
+#import "GlobalHead.h"
 #import "CameraViewController.h"
 #import "SubmitViewController.h"
 #import "GlobalHead.h"

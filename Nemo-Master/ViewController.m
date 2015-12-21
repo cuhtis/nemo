@@ -6,6 +6,7 @@
 //  Copyright © 2015 Junhan Huang. All rights reserved.
 //
 
+#import "GlobalHead.h"
 #import "ViewController.h"
 #import "Helper.h"
 #import "ParkingSpot.h"
@@ -23,11 +24,14 @@
     CLLocationManager *locationManager;
     GMSCameraPosition *firstPosition;
 }
+
+/* Retreive the ParkingSpots object from the app delegate */
 - (ParkingSpots *)parkingSpots {
     return [AppDelegate appDelegate].parkingSpots;
 }
+
 - (void)viewWillAppear:(BOOL)animated {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"viewWillAppear");
 #endif
     // add observer for Google Maps myLocation object (to see location changes)
@@ -87,12 +91,21 @@
     [self updateMarkers];
 }
 
+/* Update the markers on the GMSMapView */
 - (void) updateMarkers {
+#ifdef DEBUG_NEMO
     NSLog(@"AddMarkers");
+#endif
+    
+    // Reset the map
     self.mapView.delegate = self;
     [self.mapView clear];
+    
+    // Add each parking spot as a marker
     for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
-        if (true) {
+        // Only add the parking spot if it's not taken
+        if (ps.is_taken == NO) {
+            // Create a new marker and set its values to the parking spot's data
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
                                                          [[ps longitude] doubleValue]);
@@ -100,43 +113,58 @@
             marker.icon = [UIImage imageNamed:@"Nemo"];
             marker.title = ps.name;
         
+            // Add the marker to the map
             marker.map = self.mapView;
             ps.marker = marker;
+            
+#ifdef DEBUG_NEMO
             NSLog(@"Add marker: %@", ps.name);
+#endif
         }
     }
     // attaches information to marker just added
     if ([AppDelegate appDelegate].globalSpot) {
         if (true) {
             GMSMarker *marker = [[GMSMarker alloc] init];
-            marker.position = CLLocationCoordinate2DMake([[[AppDelegate appDelegate].globalSpot latitude] doubleValue],
-                                                         [[[AppDelegate appDelegate].globalSpot longitude] doubleValue]);
-            marker.userData = [AppDelegate appDelegate].globalSpot;
+            marker.position = CLLocationCoordinate2DMake([[global latitude] doubleValue],
+                                                         [[global longitude] doubleValue]);
+            marker.userData = global;
             marker.icon = [UIImage imageNamed:@"Nemo"];
-            marker.title = [AppDelegate appDelegate].globalSpot.name;
+            marker.title = global.name;
             
+            // Add the marker to the map
             marker.map = self.mapView;
-            [AppDelegate appDelegate].globalSpot.marker = marker;
+            global.marker = marker;
+            
+#ifdef DEBUG_NEMO
             NSLog(@"Add marker: %@", [AppDelegate appDelegate].globalSpot.name);
+#endif
         }
-        NSLog(@"added new marker to map");
     }
 }
     
 - (UIView *) mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
+    
+    // Create an instance of the info window
     CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
     
+    // Retrieve the parking spot object
     ParkingSpot *parkingSpot = marker.userData;
     
+    // Set the text fields in the info window
     infoWindow.address.text = parkingSpot.name;
     infoWindow.price.text = parkingSpot.price ? [NSString stringWithFormat:@"$%@", parkingSpot.price] : @"$0";
     
+    // Set the image
     [infoWindow.image setContentMode:UIViewContentModeScaleAspectFit];
     infoWindow.image.image = parkingSpot.image;
     
+#ifdef DEBUG_NEMO
     NSLog(@"%@", parkingSpot.create_date);
     NSLog(@"%@", [NSDate date].description);
+#endif
     
+    // Calculate the time stamp
     NSString *created = parkingSpot.create_date;
     NSString *now = [NSDate date].description;
     int days = [[now substringWithRange: NSMakeRange(8, 2)] intValue] - [[created substringWithRange: NSMakeRange(8, 2)] intValue];
@@ -144,6 +172,7 @@
     int minutes = [[now substringWithRange: NSMakeRange(14, 2)] intValue] - [[created substringWithRange: NSMakeRange(14, 2)] intValue];
     int seconds = [[now substringWithRange: NSMakeRange(17, 2)] intValue] - [[created substringWithRange: NSMakeRange(17, 2)] intValue];
     
+    // Set the time stamp text
     if (days > 3) infoWindow.time.text = @"Several days ago";
     else if (days > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d days ago", days];
     else if (hours > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d hours ago", hours];
@@ -151,64 +180,96 @@
     else if (seconds > 0) infoWindow.time.text = [NSString stringWithFormat:@"%d seconds ago", seconds];
     else infoWindow.time.text = @"Just added";
     
+#ifdef DEBUG_NEMO
     NSLog(@"D:%d, H:%d, M:%d, S:%d", days, hours, minutes, seconds);
-    
     NSLog(@"Marker info: %@", parkingSpot.name);
+#endif
+    
     return infoWindow;
 }
 
+/* UIAlert when the user clicks on the info window, option to claim parking spot */
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    
+    // Get the parking spot object
+    ParkingSpot *parkingSpot = marker.userData;
+    
+    // Create the alert with messages
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Claim this spot?"
                                                                    message:@"Claiming this parking spot will make it unavailable for others to see."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
+    // Set the action for claiming the spot
     UIAlertAction* claimAction = [UIAlertAction actionWithTitle:@"Claim!" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)
     {
         marker.map = nil;
-        [self.parkingSpots removeParkingSpot:marker.userData];
+        parkingSpot.marker = nil;
+        parkingSpot.is_taken = YES;
+        [self.parkingSpots removeParkingSpot:parkingSpot];
     }];
     [alert addAction:claimAction];
     
+    // Set the action for the spot being already gone
     UIAlertAction* goneAction = [UIAlertAction actionWithTitle:@"It's Gone!" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action)
     {
         marker.map = nil;
-        [self.parkingSpots removeParkingSpot:marker.userData];
+        parkingSpot.marker = nil;
+        parkingSpot.is_taken = YES;
+        [self.parkingSpots removeParkingSpot:parkingSpot];
     }];
     [alert addAction:goneAction];
     
+    // Set the action for cancelling the UIAlert
     UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
                                                        handler:^(UIAlertAction * action) {}];
     [alert addAction:cancelAction];
     
+    // Present the alert
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+/* Function that is called whenever the parking spots model is updated */
 - (void)modelUpdated {
-    // UPDATE MARKERS
+#ifdef DEBUG_NEMO
     NSLog(@"modelUpdated");
+#endif
+    
+    // Update markers in main thread
+    // Only main thread can change the GMSMapView
     dispatch_async(dispatch_get_main_queue(),
     ^{
+#ifdef DEBUG_NEMO
         NSLog(@"AsyncDispatch START");
+#endif
+        
         [self updateMarkers];
+        
+#ifdef DEBUG_NEMO
         NSLog(@"AsyncDispatch END");
+#endif
     });
 }
 
+/* Authorization of location services */
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     
     // if user authorizes location services, enable myLocation
     if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+#ifdef DEBUG_NEMO
         NSLog(@"successfully authorized");
+#endif
         _mapView.myLocationEnabled = YES;
     }
 }
 
 - (void)locationManager: (CLLocationManager *) manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
-#ifdef DEBUG
+    
+#ifdef DEBUG_NEMO
     NSLog(@"didUpdateToLocation: %@", locations);
 #endif
+    
     CLLocation *currentLocation = [locations lastObject];
 
     // zoom map to current location first time app opens
@@ -248,16 +309,19 @@
     }
 }
 
+/* Refresh button clicked */
 - (IBAction)refreshFish:(id)sender {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"Refresh");
 #endif
+    
+    // Update the markers
     [self updateMarkers];
 }
 
     // called when view is removed from stack
 - (void)dealloc {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"Dealloc ViewController");
 #endif
     // try to dealloc the observer

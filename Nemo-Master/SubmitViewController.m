@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Junhan Huang. All rights reserved.
 //
 
+#import "GlobalHead.h"
 #import "SubmitViewController.h"
 #import "ParkingSpot.h"
 #import "ParkingSpots.h"
