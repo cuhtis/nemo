@@ -42,18 +42,18 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     firstLocationUpdate_ = NO;
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"viewWillDisappear");
 #endif
     [locationManager stopUpdatingLocation];
 }
 
 - (void)viewDidLoad {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"viewDidLoad");
 #endif
     [super viewDidLoad];
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"global added");
 #endif
     [self parkingSpots].delegate = self;
@@ -104,7 +104,7 @@
     // Add each parking spot as a marker
     for (ParkingSpot *ps in [self.parkingSpots filteredParkingSpots]) {
         // Only add the parking spot if it's not taken
-        if (ps.is_taken == NO) {
+        if (!ps.is_taken) {
             // Create a new marker and set its values to the parking spot's data
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([[ps latitude] doubleValue],
@@ -122,9 +122,13 @@
 #endif
         }
     }
-    // attaches information to marker just added
-    if ([AppDelegate appDelegate].globalSpot) {
-        if (true) {
+    
+    // Add the temporary global parking spot as a marker
+    ParkingSpot *global =[AppDelegate appDelegate].globalSpot;
+    if (global) {
+        // Only add the parking spot if it's not taken
+        if (!global.is_taken) {
+            // Create a new marker and set its values to the parking spot's data
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake([[global latitude] doubleValue],
                                                          [[global longitude] doubleValue]);
@@ -142,7 +146,8 @@
         }
     }
 }
-    
+
+/* Custom info window setup for markers */
 - (UIView *) mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     
     // Create an instance of the info window
@@ -205,7 +210,7 @@
     {
         marker.map = nil;
         parkingSpot.marker = nil;
-        parkingSpot.is_taken = YES;
+        parkingSpot.is_taken = @1;
         [self.parkingSpots removeParkingSpot:parkingSpot];
     }];
     [alert addAction:claimAction];
@@ -216,7 +221,7 @@
     {
         marker.map = nil;
         parkingSpot.marker = nil;
-        parkingSpot.is_taken = YES;
+        parkingSpot.is_taken = @1;
         [self.parkingSpots removeParkingSpot:parkingSpot];
     }];
     [alert addAction:goneAction];
@@ -338,9 +343,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-//The target unwind to Root. 
+/* Called when a view unwinds back to the map view */
 -(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"unwindToRoot");
 #endif
     //[self addMarkers];

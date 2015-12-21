@@ -12,4 +12,4 @@
 
 #endif /* GlobalHead_h */
 
-#define DEBUG_NEMO 1;
+#define DEBUG_NEMO 1

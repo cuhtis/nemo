@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/Mapkit.h>
-#import "GlobalHead.h"
 @import CoreLocation;
 @import GoogleMaps;
 

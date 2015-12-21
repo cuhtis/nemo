@@ -9,7 +9,6 @@
 #import "GlobalHead.h"
 #import "CameraViewController.h"
 #import "SubmitViewController.h"
-#import "GlobalHead.h"
 @interface CameraViewController ()
 
 @end
@@ -28,15 +27,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     _submitBut.hidden=YES;
     _submitBut.enabled=NO;
     // Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-//Utilizes AVFoundation to produce the live feed on the view.
-- (void)viewWillAppear:(BOOL)animated{
+    
     session = [[AVCaptureSession alloc] init];
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
     
@@ -63,6 +54,15 @@ AVCaptureStillImageOutput *StillImageOutput;
     [StillImageOutput setOutputSettings:outputSettings];
     
     [session addOutput:StillImageOutput];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+//Utilizes AVFoundation to produce the live feed on the view.
+- (void)viewWillAppear:(BOOL)animated{
     
     [session startRunning];
     
