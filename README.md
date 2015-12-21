@@ -11,7 +11,7 @@ It is very difficult to find parking in certain cities, at certain times. When e
 ## Configuration Instructions
 
 1. Clone the project repo
-2. In terminal, and run '$ pod install'
+2. In terminal, run '$ pod install'
 3. Download the Cloudinary repo, and add it to the project workspace
 4. Open the project from the file 'Nemo-Master/Nemo-Master.xcoworkspace'
 
