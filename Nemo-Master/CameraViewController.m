@@ -8,7 +8,7 @@
 
 #import "CameraViewController.h"
 #import "SubmitViewController.h"
-
+#import "GlobalHead.h"
 @interface CameraViewController ()
 
 @end
@@ -18,6 +18,8 @@ AVCaptureStillImageOutput *StillImageOutput;
 
 @implementation CameraViewController
 
+//Initialize some buttons to be hidden and disabled.
+//E.g. we don't want the retake button to be avialalbe if you haven't even taken a picture yet.
 - (void)viewDidLoad {
     [super viewDidLoad];
     _retakeBut.hidden=YES;
@@ -32,6 +34,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     // Dispose of any resources that can be recreated.
 }
 
+//Utilizes AVFoundation to produce the live feed on the view.
 - (void)viewWillAppear:(BOOL)animated{
     session = [[AVCaptureSession alloc] init];
     [session setSessionPreset:AVCaptureSessionPresetPhoto];
@@ -64,6 +67,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     
 }
 
+//allows for the taken photo to be passed onto the SubmitView
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if([segue.identifier isEqualToString:@"snap"]){
         SubmitViewController *controller = (SubmitViewController *)segue.destinationViewController;
@@ -84,6 +88,8 @@ AVCaptureStillImageOutput *StillImageOutput;
     return YES;
 }
 
+//whatever's on the current View (live feed) will be captured on the
+//ImageView
 - (IBAction)takephoto:(id)sender{
     AVCaptureConnection *videoConnection = nil;
     for(AVCaptureConnection *connection in StillImageOutput.connections){
@@ -114,6 +120,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     }];
 }
 
+//Retake Button, clearing the ImageView and reenabling buttons that are set to work
 - (IBAction)retakephoto:(id)sender {
     _snapBut.hidden=NO;
     _snapBut.enabled=YES;
@@ -126,6 +133,7 @@ AVCaptureStillImageOutput *StillImageOutput;
     imageView.image=nil;
 }
 
+//Creates destination for unwind
 -(IBAction)unwindtoCamera:(UIStoryboardSegue *)segue{
     _retakeBut.hidden=NO;
     _retakeBut.enabled=YES;

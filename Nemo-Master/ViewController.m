@@ -105,6 +105,7 @@
             NSLog(@"Add marker: %@", ps.name);
         }
     }
+    // attaches information to marker just added
     if ([AppDelegate appDelegate].globalSpot) {
         if (true) {
             GMSMarker *marker = [[GMSMarker alloc] init];
@@ -121,7 +122,7 @@
         NSLog(@"added new marker to map");
     }
 }
-
+    
 - (UIView *) mapView:(GMSMapView *)mapView markerInfoWindow:(GMSMarker *)marker {
     CustomInfoWindow *infoWindow = [[[NSBundle mainBundle] loadNibNamed:@"InfoWindow" owner:self options:nil] objectAtIndex:0];
     
@@ -210,7 +211,7 @@
 #endif
     CLLocation *currentLocation = [locations lastObject];
 
-    // only zoom map to current location first time app opens
+    // zoom map to current location first time app opens
     if (currentLocation != nil && !firstLocationUpdate_) {
         CLLocationCoordinate2D target =
         CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude);
@@ -254,7 +255,7 @@
     [self updateMarkers];
 }
 
-// called when view is removed from stack
+    // called when view is removed from stack
 - (void)dealloc {
 #ifdef DEBUG
     NSLog(@"Dealloc ViewController");
@@ -273,8 +274,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+//The target unwind to Root. 
 -(IBAction)unwindtoRoot:(UIStoryboardSegue *)segue {
+#ifdef DEBUG
     NSLog(@"unwindToRoot");
+#endif
     //[self addMarkers];
 
 }

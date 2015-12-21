@@ -131,6 +131,8 @@ CLLocationManager *locationManager;
     [parkingSpot setLatitude:[f numberFromString:_LatField.text]];
     [parkingSpot setCreate_date:[NSDate date].description];
     
+    
+    // Sets global marker variable to the marker just added
     if (![AppDelegate appDelegate].globalSpot) {
         [AppDelegate appDelegate].globalSpot = parkingSpot;
     }
