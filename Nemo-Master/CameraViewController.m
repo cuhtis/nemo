@@ -9,6 +9,7 @@
 #import "GlobalHead.h"
 #import "CameraViewController.h"
 #import "SubmitViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 @interface CameraViewController ()
 
 @end
@@ -22,6 +23,7 @@ AVCaptureStillImageOutput *StillImageOutput;
 //E.g. we don't want the retake button to be avialalbe if you haven't even taken a picture yet.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     _retakeBut.hidden=YES;
     _retakeBut.enabled=NO;
     _submitBut.hidden=YES;

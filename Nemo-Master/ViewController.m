@@ -212,6 +212,7 @@
         parkingSpot.marker = nil;
         parkingSpot.is_taken = @1;
         [self.parkingSpots removeParkingSpot:parkingSpot];
+        [self.parkingSpots persist:parkingSpot];
     }];
     [alert addAction:claimAction];
     
@@ -223,6 +224,7 @@
         parkingSpot.marker = nil;
         parkingSpot.is_taken = @1;
         [self.parkingSpots removeParkingSpot:parkingSpot];
+        [self.parkingSpots persist:parkingSpot];
     }];
     [alert addAction:goneAction];
     
@@ -336,7 +338,6 @@
             
     }
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

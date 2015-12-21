@@ -92,16 +92,17 @@ CLLocationManager *locationManager;
 {
     locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
-    
     [locationManager requestAlwaysAuthorization];
 }
 
+/* Gets location of where picture was taken */
 - (void)locationManager: (CLLocationManager *) manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
     CLLocation *currentLocation = [locations lastObject];
     if (currentLocation != nil && firstLocationUpdate_) {
         _LatField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.latitude];
         _LongField.text = [NSString stringWithFormat:@"%f", currentLocation.coordinate.longitude];
         
+        // Converts coordinates to street name using Google Geocoder
         [[GMSGeocoder geocoder] reverseGeocodeCoordinate:currentLocation.coordinate
                                        completionHandler:
          ^(GMSReverseGeocodeResponse *response, NSError *error){
@@ -113,14 +114,9 @@ CLLocationManager *locationManager;
     }
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
-   
-    
-    
-}
-
 - (IBAction)SubmitForm:(id)sender {
+    /* Puts new submission on the map */
+    
     NSLog(@"SubmitForm");
     ParkingSpot *parkingSpot = [[ParkingSpot alloc] init];
     [parkingSpot setImage:_snappedImage];
@@ -134,13 +130,9 @@ CLLocationManager *locationManager;
     
     
     // Sets global marker variable to the marker just added
-    if (![AppDelegate appDelegate].globalSpot) {
-        [AppDelegate appDelegate].globalSpot = parkingSpot;
-    }
+    [AppDelegate appDelegate].globalSpot = parkingSpot;
     
     [self.parkingSpots persist:parkingSpot];
-    
-    
     
 }
 @end

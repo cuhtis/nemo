@@ -7,11 +7,13 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface CameraViewController : UIViewController{
     IBOutlet UIView *frameforCapture;
     IBOutlet UIImageView *imageView;
 }
+
 @property (strong, nonatomic) IBOutlet UIButton *retakeBut;
 @property (strong, nonatomic) IBOutlet UIButton *snapBut;
 @property (strong, nonatomic) IBOutlet UIButton *submitBut;

@@ -54,7 +54,7 @@
     safeSet(jsonable, @"_id", self._id);
     safeSet(jsonable, @"imageId", self.imageId);
     safeSet(jsonable, @"create_date", self.create_date);
-    safeSet(jsonable, @"is_take", self.is_taken);
+    safeSet(jsonable, @"is_taken", self.is_taken);
     
     // Return the NSDictionary
     return jsonable;
