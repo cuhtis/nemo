@@ -6,6 +6,7 @@
 //  Copyright © 2015 Junhan Huang. All rights reserved.
 //
 
+#import "GlobalHead.h"
 #import "ParkingSpots.h"
 #import "ParkingSpot.h"
 #import <UIKit/UIKit.h>
@@ -29,7 +30,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (id)init
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: init");
 #endif
     
@@ -53,7 +54,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (NSArray*) filteredParkingSpots
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: filteredParkingSpots");
 #endif
     
@@ -63,7 +64,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (void) addParkingSpot:(ParkingSpot*)parkingSpot
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: addParkingSpot");
 #endif
     
@@ -73,7 +74,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (void) removeParkingSpot:(ParkingSpot*)parkingSpot
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: deleteParkingSpot");
 #endif
     
@@ -83,7 +84,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (void)loadImage:(ParkingSpot *)parkingSpot
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: loadImage (%@)", parkingSpot.name);
 #endif
     
@@ -111,7 +112,7 @@ static NSString* const kParkingSpots = @"parkingspots";
             UIImage* image = [UIImage imageWithData:imageData];
             
             // If there was an error in downloading the image
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
             if (!image) {
                 NSLog(@"Unable to build image");
             }
@@ -121,14 +122,14 @@ static NSString* const kParkingSpots = @"parkingspots";
             parkingSpot.image = image;
             
             if (self.delegate) {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
                 NSLog(@"Built image, update delegate");
 #endif
                 
                 // Tell the delegate we updated the parking spots
                 [self.delegate modelUpdated];
             } else {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
                 NSLog(@"Built image, no delegate found");
 #endif
             }
@@ -142,7 +143,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 // Populate the local array from the database
 - (void)import
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: Import");
 #endif
     
@@ -176,7 +177,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (void)parseAndAddParkingSpots:(NSArray*)parkingSpots toArray:(NSMutableArray*)destinationArray
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: parseAndAddParkingSpots");
 #endif
     
@@ -195,12 +196,12 @@ static NSString* const kParkingSpots = @"parkingspots";
     
     // Tell the delegate we updated the parking spots
     if (self.delegate) {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
         NSLog(@"Parsed, update model");
 #endif
         [self.delegate modelUpdated];
     } else {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
         NSLog(@"No delegate found");
 #endif
     }
@@ -208,7 +209,7 @@ static NSString* const kParkingSpots = @"parkingspots";
 
 - (void) persist:(ParkingSpot*)parkingSpot
 {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
     NSLog(@"ParkingSpots: persist (%@)", parkingSpot.name);
 #endif
     
@@ -262,7 +263,7 @@ static NSString* const kParkingSpots = @"parkingspots";
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         // Callback
         if (!error) {
-#ifdef DEBUG
+#ifdef DEBUG_NEMO
             NSLog(@"Update objects list");
 #endif
             

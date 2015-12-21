@@ -6,6 +6,7 @@
 //  Copyright © 2015 Junhan Huang. All rights reserved.
 //
 
+#import "GlobalHead.h"
 #import "ParkingSpot.h"
 #define safeSet(d,k,v) if (v) d[k] = v;
 
